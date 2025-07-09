@@ -1,0 +1,8 @@
+flask
+flask-cors
+anthropic
+yfinance
+pandas
+numpy
+python-dotenv
+requests

@@ -994,7 +994,7 @@ const Portfolio: React.FC = () => {
 
   const fetchStockData = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:5000/api/stocks/magnificent7');
+      const response = await axios.get('https://alphaknaaut.onrender.com/api/stocks/magnificent7');
       setStockData(response.data.data);
     } catch (error) {
       console.error('Error fetching stock data:', error);
@@ -1004,7 +1004,7 @@ const Portfolio: React.FC = () => {
   const getEconomicIntelligence = async () => {
     setEconomicLoading(true);
     try {
-      const response = await axios.get('http://127.0.0.1:5000/api/market/economic-intelligence');
+      const response = await axios.get('https://alphaknaaut.onrender.com/api/market/economic-intelligence');
       setEconomicData(response.data);
     } catch (error) {
       console.error('Error fetching economic intelligence:', error);
@@ -1041,7 +1041,7 @@ const Portfolio: React.FC = () => {
     try {
       console.log('🔮 Getting NEWS-ENHANCED predictions with weights:', weightsToUse);
       
-      const response = await axios.post('http://127.0.0.1:5000/api/portfolio/enhanced-predictions-fixed', {
+      const response = await axios.post('https://alphaknaaut.onrender.com/api/portfolio/enhanced-predictions-fixed', {
         weights: weightsToUse,
         risk_profile: riskProfile,
         amount: investmentAmount,
@@ -1069,7 +1069,7 @@ const Portfolio: React.FC = () => {
     try {
       console.log('🤖 Getting AI Portfolio Optimization...');
       
-      const response = await axios.post('http://127.0.0.1:5000/api/portfolio/ai-optimize', {
+      const response = await axios.post('https://alphaknaaut.onrender.com/api/portfolio/ai-optimize', {
         stocks: selectedStocks,
         risk_profile: riskProfile,
         amount: investmentAmount
@@ -1101,7 +1101,7 @@ const Portfolio: React.FC = () => {
     try {
       console.log('📊 Getting AI-enhanced 7-benchmark comparison with weights:', weightsToUse);
       
-      const response = await axios.post('http://127.0.0.1:5000/api/portfolio/benchmark-comparison-fixed', {
+      const response = await axios.post('https://alphaknaaut.onrender.com/api/portfolio/benchmark-comparison-fixed', {
   weights: weightsToUse,
   amount: investmentAmount,
   years: selectedTimeframe,
@@ -1130,7 +1130,7 @@ const Portfolio: React.FC = () => {
     try {
       console.log('🔍 Fetching market intelligence for:', selectedStocks);
       
-      const response = await axios.post('http://127.0.0.1:5000/api/market/news-sentiment', {
+      const response = await axios.post('https://alphaknaaut.onrender.com/api/market/news-sentiment', {
         stocks: selectedStocks
       });
       
@@ -1199,7 +1199,7 @@ const Portfolio: React.FC = () => {
     try {
       console.log('🔍 Getting AI alternatives for Strategy 2...');
       
-      const response = await axios.post('http://127.0.0.1:5000/api/portfolio/analyze', {
+      const response = await axios.post('https://alphaknaaut.onrender.com/api/portfolio/analyze', {
         weights: customWeights,
         risk_profile: riskProfile,
         amount: investmentAmount

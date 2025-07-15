@@ -925,7 +925,7 @@ const Portfolio: React.FC = () => {
 
   const magnificent7 = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'META', 'NVDA', 'TSLA'];
 
-  // CSS Variables - NEW
+  // CSS Variables - MOBILE RESPONSIVE VERSION
   const cssVars = `
     :root {
       --primary: #0a0e27;
@@ -960,6 +960,175 @@ const Portfolio: React.FC = () => {
       --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
       --shadow-accent: 0 10px 15px -3px rgba(59, 130, 246, 0.1), 0 4px 6px -2px rgba(59, 130, 246, 0.05);
     }
+
+    /* MOBILE RESPONSIVE FIXES */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* Header mobile fixes */
+    @media (max-width: 768px) {
+      header > div {
+        padding: 0 16px !important;
+        height: 70px !important;
+      }
+      
+      header > div > div:first-child {
+        gap: 12px !important;
+      }
+      
+      header > div > div:first-child > div:last-child {
+        font-size: 20px !important;
+      }
+    }
+
+    /* Hero section mobile fixes */
+    @media (max-width: 768px) {
+      section[style*="padding: 120px"] {
+        padding: 80px 16px 60px !important;
+        margin-top: 70px !important;
+      }
+      
+      h1[style*="fontSize: '80px'"] {
+        font-size: 48px !important;
+        line-height: 1.1 !important;
+        letter-spacing: -1.5px !important;
+        margin-bottom: 16px !important;
+      }
+      
+      p[style*="fontSize: '28px'"] {
+        font-size: 20px !important;
+        line-height: 1.3 !important;
+        margin-bottom: 12px !important;
+      }
+      
+      p[style*="fontSize: '20px'"] {
+        font-size: 16px !important;
+        margin-bottom: 32px !important;
+      }
+      
+      button[style*="padding: 18px 36px"] {
+        padding: 14px 28px !important;
+        font-size: 15px !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1[style*="fontSize: '80px'"], h1[style*="font-size: 48px"] {
+        font-size: 36px !important;
+        letter-spacing: -1px !important;
+      }
+      
+      p[style*="fontSize: '28px'"], p[style*="font-size: 20px"] {
+        font-size: 18px !important;
+      }
+      
+      p[style*="fontSize: '20px'"], p[style*="font-size: 16px"] {
+        font-size: 14px !important;
+      }
+    }
+
+    /* Stats section mobile fixes */
+    @media (max-width: 768px) {
+      section[style*="background: #000000"] > div {
+        padding: 60px 16px !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 32px !important;
+      }
+      
+      section[style*="background: #000000"] div[style*="fontSize: '48px'"] {
+        font-size: 36px !important;
+      }
+      
+      section[style*="background: #000000"] div[style*="fontSize: '16px'"] {
+        font-size: 14px !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      section[style*="background: #000000"] > div {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    /* Main section mobile fixes */
+    @media (max-width: 768px) {
+      section[style*="maxWidth: '1200px'"] {
+        padding: 16px 16px !important;
+      }
+      
+      h2[style*="fontSize: '56px'"] {
+        font-size: 36px !important;
+        margin-bottom: 16px !important;
+      }
+      
+      p[style*="fontSize: '22px'"] {
+        font-size: 18px !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h2[style*="fontSize: '56px'"], h2[style*="font-size: 36px"] {
+        font-size: 28px !important;
+      }
+      
+      p[style*="fontSize: '22px'"], p[style*="font-size: 18px"] {
+        font-size: 16px !important;
+      }
+    }
+
+    /* Step sections mobile fixes */
+    @media (max-width: 768px) {
+      div[style*="padding: 40px"] {
+        padding: 24px 16px !important;
+      }
+      
+      h3[style*="fontSize: '20px'"] {
+        font-size: 18px !important;
+      }
+      
+      div[style*="gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))'"] {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
+        gap: 16px !important;
+      }
+      
+      div[style*="padding: 28px"] {
+        padding: 20px 16px !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      div[style*="gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))'"],
+      div[style*="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr))"] {
+        grid-template-columns: 1fr !important;
+      }
+      
+      div[style*="padding: 40px"], div[style*="padding: 24px 16px"] {
+        padding: 16px 12px !important;
+      }
+    }
+
+    /* Text wrapping fixes */
+    h1, h2, h3, p, div {
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
+    }
+
+    /* Button mobile fixes */
+    @media (max-width: 480px) {
+      button {
+        min-width: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+    }
   `;
 
   // All existing useEffect hooks and functions - UNCHANGED
@@ -991,6 +1160,17 @@ const Portfolio: React.FC = () => {
       setUserSetStocks(new Set());
     }
   }, [selectedStocks]);
+
+// ADD THIS NEW useEffect HERE:
+useEffect(() => {
+  const handleResize = () => {
+    // Force re-render on window resize for responsive styles
+    setShowAboutPage(prev => prev);
+  };
+
+  window.addEventListener('resize', handleResize);
+  return () => window.removeEventListener('resize', handleResize);
+}, []);
 
   const fetchStockData = async () => {
     try {
@@ -1430,18 +1610,21 @@ if (showAboutPage) {
             <span>🚀</span>
             Beyond the Algorithm. Investing, Evolved.
           </div>
-          <h1 style={{
-            fontSize: '80px',
-            fontWeight: '800',
-            lineHeight: '1.05',
-            background: 'linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 70%, var(--accent-purple) 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            marginBottom: '12px',
-            letterSpacing: '-2.5px'
-          }}>
-            AI-Powered Portfolio Optimization
-          </h1>
+         <h1 style={{
+  fontSize: window.innerWidth <= 768 ? (window.innerWidth <= 480 ? '36px' : '48px') : '80px',
+  fontWeight: '800',
+  lineHeight: window.innerWidth <= 768 ? '1.1' : '1.05',
+  background: 'linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 70%, var(--accent-purple) 100%)',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  marginBottom: '12px',
+  letterSpacing: window.innerWidth <= 768 ? '-1.5px' : '-2.5px',
+  wordWrap: 'break-word',
+  overflowWrap: 'break-word',
+  hyphens: 'auto'
+}}>
+  AI-Powered Portfolio Optimization
+</h1>
           <p style={{
             fontSize: '28px',
             color: 'var(--text-secondary)',

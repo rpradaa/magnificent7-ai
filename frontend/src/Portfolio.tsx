@@ -1121,12 +1121,87 @@ const Portfolio: React.FC = () => {
       hyphens: auto;
     }
 
-    /* Button mobile fixes */
+ /* Button mobile fixes */
     @media (max-width: 480px) {
       button {
         min-width: auto !important;
         width: 100% !important;
         max-width: 100% !important;
+      }
+    }
+
+    /* Progress indicator mobile fixes */
+    @media (max-width: 768px) {
+      div[style*="display: 'flex'"][style*="justifyContent: 'center'"][style*="margin: '64px 0'"] {
+        margin: 32px 16px !important;
+        padding: 0 16px !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+      }
+      
+      div[style*="display: 'flex'"][style*="justifyContent: 'center'"] > div {
+        min-width: 80px !important;
+        flex-shrink: 0 !important;
+      }
+      
+      div[style*="width: '60px'"][style*="height: '2px'"] {
+        min-width: 40px !important;
+        flex-shrink: 0 !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      div[style*="display: 'flex'"][style*="justifyContent: 'center'"][style*="margin: '64px 0'"] {
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        margin: 24px 8px !important;
+        padding: 0 8px !important;
+      }
+      
+      div[style*="display: 'flex'"][style*="justifyContent: 'center'"] > div {
+        min-width: 70px !important;
+      }
+      
+      span[style*="fontSize: '14px'"] {
+        font-size: 12px !important;
+      }
+    }
+
+    /* Dropdown arrow fixes */
+    @media (max-width: 768px) {
+      div[style*="transform: rotate(180deg)"],
+      div[style*="transform: rotate(0deg)"] {
+        min-width: 20px !important;
+        width: 20px !important;
+        height: 20px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-shrink: 0 !important;
+      }
+      
+      div[style*="display: 'flex'"][style*="alignItems: 'center'"][style*="justifyContent: 'space-between'"] {
+        align-items: flex-start !important;
+        gap: 16px !important;
+      }
+      
+      div[style*="display: 'flex'"][style*="alignItems: 'center'"][style*="gap: '20px'"] {
+        flex: 1 !important;
+        min-width: 0 !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      div[style*="display: 'flex'"][style*="alignItems: 'center'"][style*="justifyContent: 'space-between'"] {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+      }
+      
+      div[style*="transform: rotate(180deg)"],
+      div[style*="transform: rotate(0deg)"] {
+        position: absolute !important;
+        top: 16px !important;
+        right: 16px !important;
       }
     }
   `;

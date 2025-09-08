@@ -236,7 +236,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
             color: 'var(--text-primary)',
             letterSpacing: '-0.5px'
           }}>
-            AlphaKnaut
+            AlphaKnaut V2
           </div>
         </div>
         <nav style={{
@@ -302,7 +302,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
         WebkitBackgroundClip: 'text',
         WebkitTextFillColor: 'transparent'
       }}>
-        AlphaKnaut: Building Institutional-Grade AI for Portfolio Strategy
+        AlphaKnaut V2: Building Institutional-Grade AI for Portfolio Strategy
       </h1>
       <p style={{
         fontSize: '1.25rem',

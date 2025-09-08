@@ -386,6 +386,36 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
         </div>
       </div>
 
+<div style={{ marginBottom: '3rem' }}>
+        <h2 style={{
+          fontSize: '1.75rem',
+          fontWeight: '700',
+          color: '#0f172a',
+          marginBottom: '1rem',
+          letterSpacing: '-0.3px'
+        }}>
+          Why "AlphaKnaut"?
+        </h2>
+        <div style={{
+          color: '#475569',
+          fontSize: '1rem',
+          lineHeight: '1.7'
+        }}>
+          <p style={{ marginBottom: '1rem' }}>
+            <strong style={{ color: '#0f172a', fontWeight: '600' }}>"Alpha"</strong> represents excess returns above market benchmarks—the ultimate goal of sophisticated investing. In institutional finance, consistently generating alpha requires advanced quantitative analysis, precision risk management, and superior market intelligence.
+          </p>
+          <p style={{ marginBottom: '1rem' }}>
+            <strong style={{ color: '#0f172a', fontWeight: '600' }}>"Knaut"</strong> (navigator/explorer) embodies the systematic journey toward discovering optimal portfolio allocations. Just as astronauts navigate uncharted space using cutting-edge technology, AlphaKnaut navigates the complex intersection of AI and financial markets to guide investors toward alpha-generating portfolios.
+          </p>
+          <p style={{ marginBottom: '1rem' }}>
+            <strong style={{ color: '#0f172a', fontWeight: '600' }}>AlphaKnaut's Mission:</strong> To be the intelligent navigator that helps investors reach optimal portfolio construction, systematically beating market benchmarks through AI-powered analysis and institutional-grade methodology.
+          </p>
+          <p style={{ marginBottom: '1rem' }}>
+            <strong style={{ color: '#0f172a', fontWeight: '600' }}>Important Distinction:</strong> AlphaKnaut is entirely separate from Alphanaut.io (the cryptocurrency trading platform). While they focus on crypto trading automation, AlphaKnaut specializes exclusively in AI-driven equity portfolio optimization and fundamental analysis of technology sector leaders.
+          </p>
+        </div>
+      </div>
+
 	
 	{/* ADD THIS NEW SECTION HERE */}
       <div style={{ marginBottom: '3rem' }}>
@@ -1191,12 +1221,30 @@ const Portfolio: React.FC = () => {
       }
     }
 
-    @media (max-width: 480px) {
-      div[style*="display: 'flex'"][style*="alignItems: 'center'"][style*="justifyContent: 'space-between'"] {
-        flex-direction: column !important;
-        align-items: flex-start !important;
-      }
-      
+    /* Mobile Notice */
+    .mobile-notice {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      background: rgba(15, 23, 42, 0.95);
+      color: white;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      text-align: center;
+      z-index: 1000;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    /* ADD THIS NEW MEDIA QUERY FOR MOBILE NOTICE */
+@media (max-width: 768px) {
+  .mobile-notice {
+    display: block;
+  }
+}      
       div[style*="transform: rotate(180deg)"],
       div[style*="transform: rotate(0deg)"] {
         position: absolute !important;
@@ -1538,6 +1586,11 @@ if (showAboutPage) {
     }}>
       {/* Inject CSS Variables */}
       <style>{cssVars}</style>
+
+	  {/* ADD THIS HERE */}
+    <div className="mobile-notice">
+      📱 For the best experience, please view on desktop or tablet
+    </div>
       
       {/* Header */}
       <header style={{
@@ -1551,7 +1604,6 @@ if (showAboutPage) {
         backdropFilter: 'blur(12px)',
         boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
       }}>
-	
  
         <div style={{
           maxWidth: '1200px',
@@ -1865,49 +1917,50 @@ if (showAboutPage) {
         gap: '16px'
       }}>
         {[
-          { num: 1, label: 'Assets', completed: selectedStocks.length > 0 },
-          { num: 2, label: 'Strategy', completed: selectedStrategy > 0 },
-          { num: 3, label: 'Risk', completed: riskProfile !== '' },
-          { num: 4, label: 'Capital', completed: investmentAmount > 0 },
-          { num: 5, label: 'Analysis', completed: enhancedPredictions !== null }
-        ].map((step, index) => (
-          <React.Fragment key={step.num}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <div style={{
-                width: '40px',
-                height: '40px',
-                borderRadius: '50%',
-                background: step.completed ? 'var(--gradient-success)' : 'var(--surface-elevated)',
-                border: step.completed ? '2px solid var(--success)' : '2px solid var(--border)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontWeight: '600',
-                fontSize: '14px',
-                color: step.completed ? 'white' : 'var(--text-muted)',
-                transition: 'all 0.3s ease',
-                boxShadow: step.completed ? '0 4px 12px rgba(16, 185, 129, 0.3)' : 'none'
-              }}>
-                {step.completed ? '✓' : step.num}
-              </div>
-              <span style={{
-                fontSize: '14px',
-                color: 'var(--text-muted)',
-                fontWeight: '500'
-              }}>
-                {step.label}
-              </span>
-            </div>
-            {index < 4 && (
-              <div style={{
-                width: '60px',
-                height: '2px',
-                background: step.completed ? 'var(--gradient-success)' : 'var(--border)',
-                transition: 'background 0.3s ease'
-              }} />
-            )}
-          </React.Fragment>
-        ))}
+  { num: 1, label: 'Assets', completed: selectedStocks.length > 0 },
+  { num: 2, label: 'Strategy', completed: selectedStrategy > 0 },
+  { num: 3, label: 'Risk', completed: riskProfile !== '' },
+  { num: 4, label: 'Capital', completed: investmentAmount > 0 },
+  { num: 5, label: 'Analysis', completed: enhancedPredictions !== null },
+].map((step, index) => (
+  <React.Fragment key={step.num}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+      <div style={{
+        width: '40px',
+        height: '40px',
+        borderRadius: '50%',
+        background: step.completed ? 'var(--gradient-success)' : 'var(--surface-elevated)',
+        border: step.completed ? '2px solid var(--success)' : '2px solid var(--border)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontWeight: '600',
+        fontSize: '14px',
+        color: step.completed ? 'white' : 'var(--text-muted)',
+        transition: 'all 0.3s ease',
+        boxShadow: step.completed ? '0 4px 12px rgba(16, 185, 129, 0.3)' : 'none'
+      }}>
+        {step.completed ? '✓' : step.num}
+      </div>
+      <span style={{
+        fontSize: '14px',
+        color: 'var(--text-muted)',
+        fontWeight: '500'
+      }}>
+        {step.label}
+      </span>
+    </div>
+    {index < 5 && (
+      <div style={{
+        width: '60px',
+        height: '2px',
+        background: step.completed ? 'var(--gradient-success)' : 'var(--border)',
+        transition: 'background 0.3s ease'
+      }} />
+    )}
+  </React.Fragment>
+))}
+ 
       </div>
 
       {/* Main Platform */}
@@ -2468,36 +2521,60 @@ if (showAboutPage) {
                                 marginBottom: '15px',
                                 display: 'block'
                               }}>
-                                🎯 AI Recommended Allocations:
+🎯 AI Recommended Allocations:
                               </strong>
                               <div style={{
                                 display: 'grid',
                                 gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
                                 gap: '10px'
                               }}>
-                                {Object.entries(aiPortfolioResult.ai_optimization.recommended_allocations).map(([stock, weight]) => (
-                                  <div key={stock} style={{
-                                    padding: '10px',
-                                    background: 'rgba(6, 182, 212, 0.1)',
-                                    borderRadius: '8px',
-                                    border: '1px solid rgba(6, 182, 212, 0.3)',
-                                    textAlign: 'center'
-                                  }}>
-                                    <div style={{
-                                      fontWeight: '700',
-                                      color: '#06b6d4'
+                                {(() => {
+                                  // Extract allocations from the JSON in ai_reasoning
+                                  let allocations = aiPortfolioResult.ai_optimization.recommended_allocations;
+                                  
+                                  // Try to get allocations from the JSON response instead
+                                  try {
+                                    const reasoning = aiPortfolioResult.ai_optimization.ai_reasoning;
+                                    if (typeof reasoning === 'string' && reasoning.trim().startsWith('{')) {
+                                      const cleaned = reasoning.trim()
+                                        .replace(/[\u0000-\u001F\u007F-\u009F]/g, ' ')
+                                        .replace(/[\n\r\t]/g, ' ')
+                                        .replace(/\s+/g, ' ')
+                                        .trim();
+                                      
+                                      const parsed = JSON.parse(cleaned);
+                                      if (parsed.allocations) {
+                                        allocations = parsed.allocations;
+                                        console.log('✅ Using allocations from JSON:', allocations);
+                                      }
+                                    }
+                                  } catch (e) {
+                                    console.log('Using fallback allocations');
+                                  }
+                                  
+                                  return Object.entries(allocations).map(([stock, weight]) => (
+                                    <div key={stock} style={{
+                                      padding: '10px',
+                                      background: 'rgba(6, 182, 212, 0.1)',
+                                      borderRadius: '8px',
+                                      border: '1px solid rgba(6, 182, 212, 0.3)',
+                                      textAlign: 'center'
                                     }}>
-                                      {stock}
+                                      <div style={{
+                                        fontWeight: '700',
+                                        color: '#06b6d4'
+                                      }}>
+                                        {stock}
+                                      </div>
+                                      <div style={{
+                                        color: 'var(--text-primary)',
+                                        fontSize: '1.1rem',
+                                        fontWeight: '600'
+                                      }}>
+{typeof weight === 'number' ? (weight > 1 ? weight.toFixed(1) : (weight * 100).toFixed(1)) : weight}%                                      </div>
                                     </div>
-                                    <div style={{
-                                      color: 'var(--text-primary)',
-                                      fontSize: '1.1rem',
-                                      fontWeight: '600'
-                                    }}>
-                                      {((weight as number) * 100).toFixed(1)}%
-                                    </div>
-                                  </div>
-                                ))}
+                                  ));
+                                })()}
                               </div>
                             </div>
                           )}
@@ -2521,7 +2598,54 @@ if (showAboutPage) {
                               lineHeight: '1.6',
                               whiteSpace: 'pre-wrap'
                             }}>
-                              {aiPortfolioResult.ai_optimization.ai_reasoning}
+                              {(() => {
+                                let reasoning = aiPortfolioResult.ai_optimization.ai_reasoning;
+                                console.log('🔍 Raw reasoning:', reasoning.substring(0, 100));
+                                
+                                if (typeof reasoning === 'string') {
+                                  const trimmed = reasoning.trim();
+                                  
+                                  // Check if it contains JSON structure
+                                  if (trimmed.includes('ai_reasoning') && trimmed.includes('{')) {
+                                    try {
+                                      // Extract just the ai_reasoning content from nested JSON
+                                      let match = trimmed.match(/"ai_reasoning":\s*"([^"]+)"/);
+                                      if (match && match[1]) {
+                                        console.log('✅ Found nested ai_reasoning');
+                                        let extracted = match[1]
+                                          // Unescape JSON string
+                                          .replace(/\\"/g, '"')
+                                          .replace(/\\n/g, '\n')
+                                          // Format with proper sections
+                                          .replace(/(\d+\.\s*[A-Z]{3,5}\s*\([^)]+\):)/g, '\n\n**$1**\n')
+                                          .replace(/(\d+\.\s*QQQ\s*\([^)]+\):)/g, '\n\n**$1**\n')
+                                          // Clean up spacing
+                                          .replace(/\n{3,}/g, '\n\n')
+                                          .trim();
+                                        
+                                        return extracted;
+                                      }
+                                      
+                                      // If that doesn't work, try parsing the full JSON
+                                      let cleaned = trimmed.match(/\{.*\}/)?.[0];
+                                      if (cleaned) {
+                                        const parsed = JSON.parse(cleaned);
+                                        if (parsed.ai_reasoning) {
+                                          return parsed.ai_reasoning
+                                            .replace(/(\d+\.\s*[A-Z]{3,5}\s*\([^)]+\):)/g, '\n\n**$1**\n')
+                                            .replace(/\n{3,}/g, '\n\n')
+                                            .trim();
+                                        }
+                                      }
+                                    } catch (e) {
+                                      console.log('❌ JSON parsing error:', e.message);
+                                    }
+                                  }
+                                }
+                                
+                                console.log('⚠️ Using raw text');
+                                return reasoning;
+                              })()}
                             </div>
                           </div>
                         </div>
@@ -2758,7 +2882,7 @@ if (showAboutPage) {
             {/* Step 5: Portfolio Analysis */}
             <StepSection
               stepNumber={5}
-              title="Portfolio Analysis"
+              title="Portfolio Analysis & Benchmarks"
               description="Generate AI-powered investment intelligence"
               isOpen={openSteps[5]}
               onToggle={() => toggleStep(5)}
@@ -3382,183 +3506,6 @@ if (showAboutPage) {
                 </div>
               )}
 
-              {/* Market Intelligence Section - Tech Industry News */}
-<div style={{ marginTop: '32px' }}>
-  <div style={{
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: '20px'
-  }}>
-    <h4 style={{
-      fontSize: '18px',
-      fontWeight: '600',
-      color: 'var(--text-primary)'
-    }}>
-      📰 Technology Market Intelligence
-    </h4>
-    <button
-      onClick={getMarketIntelligence}
-      disabled={newsLoading || selectedStocks.length === 0}
-      style={{
-        padding: '10px 20px',
-        background: newsLoading ? 'var(--text-muted)' : 'linear-gradient(135deg, #06b6d4 0%, var(--accent-purple) 100%)',
-        color: 'white',
-        border: 'none',
-        borderRadius: '8px',
-        cursor: newsLoading ? 'not-allowed' : 'pointer',
-        fontWeight: '600',
-        fontSize: '14px'
-      }}
-    >
-      {newsLoading ? '📡 Fetching Tech News...' : '📰 Get Tech Industry News'}
-    </button>
-  </div>
-
-  {marketNews ? (
-    <div style={{
-      padding: '24px',
-      background: 'var(--surface-elevated)',
-      borderRadius: '12px',
-      border: '1px solid var(--border)'
-    }}>
-      {/* Tech Industry Headlines */}
-      {marketNews.market_intelligence?.general_news && marketNews.market_intelligence.general_news.length > 0 ? (
-        <div>
-          <h5 style={{
-            color: 'var(--accent)',
-            fontSize: '16px',
-            fontWeight: '600',
-            marginBottom: '16px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px'
-          }}>
-            🌐 Latest Technology Industry Headlines
-          </h5>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '16px'
-          }}>
-           {marketNews.market_intelligence.general_news.slice(0, 8).map((news, index) => (
-              <div key={index} style={{
-                padding: '16px',
-                background: 'var(--surface)',
-                borderRadius: '10px',
-                border: '1px solid var(--border)',
-                transition: 'all 0.2s ease',
-                cursor: 'default'
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.boxShadow = 'var(--shadow-accent)';
-                e.currentTarget.style.borderColor = 'var(--accent-light)';
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.boxShadow = 'none';
-                e.currentTarget.style.borderColor = 'var(--border)';
-              }}>
-                <div style={{
-                  fontSize: '14px',
-                  fontWeight: '600',
-                  color: 'var(--text-primary)',
-                  marginBottom: '8px',
-                  lineHeight: '1.4'
-                }}>
-                  {news.headline}
-                </div>
-                <div style={{
-                  fontSize: '12px',
-                  color: 'var(--text-secondary)',
-                  lineHeight: '1.5',
-                  marginBottom: '8px'
-                }}>
-                  {news.summary}
-                </div>
-                <div style={{
-                  fontSize: '10px',
-                  color: 'var(--accent)',
-                  fontWeight: '500',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center'
-                }}>
-                  <span>📰 {news.source}</span>
-                  {news.datetime && (
-                    <span>🕒 {new Date(news.datetime * 1000).toLocaleDateString()}</span>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      ) : (
-        <div style={{
-          padding: '32px',
-          background: 'rgba(148, 163, 184, 0.1)',
-          borderRadius: '12px',
-          textAlign: 'center'
-        }}>
-          <div style={{ fontSize: '2rem', marginBottom: '12px' }}>📰</div>
-          <div style={{
-            color: 'var(--text-secondary)',
-            fontSize: '16px',
-            marginBottom: '8px'
-          }}>
-            No tech industry news available
-          </div>
-          <div style={{
-            color: 'var(--text-muted)',
-            fontSize: '14px'
-          }}>
-            Check back later for the latest technology market updates
-          </div>
-        </div>
-      )}
-
-      {/* Data Source Footer */}
-      <div style={{
-        marginTop: '20px',
-        padding: '12px',
-        background: 'rgba(59, 130, 246, 0.05)',
-        borderRadius: '8px',
-        border: '1px solid rgba(59, 130, 246, 0.2)',
-        textAlign: 'center'
-      }}>
-        <div style={{
-          fontSize: '12px',
-          color: 'var(--accent)',
-          fontWeight: '500'
-        }}>
-          📡 Technology industry news • Updated: {new Date().toLocaleTimeString()}
-        </div>
-      </div>
-    </div>
-  ) : (
-    <div style={{
-      padding: '32px',
-      background: 'var(--surface-elevated)',
-      borderRadius: '12px',
-      border: '1px solid var(--border)',
-      textAlign: 'center'
-    }}>
-      <div style={{ fontSize: '2rem', marginBottom: '12px' }}>📰</div>
-      <div style={{
-        color: 'var(--text-secondary)',
-        fontSize: '16px',
-        marginBottom: '8px'
-      }}>
-        Get the latest technology industry intelligence
-      </div>
-      <div style={{
-        color: 'var(--text-muted)',
-        fontSize: '14px'
-      }}>
-        Click "Get Tech Industry News" for current market updates
-      </div>
-    </div>
-  )}
-</div>
             </StepSection>
           </div>
         </div>

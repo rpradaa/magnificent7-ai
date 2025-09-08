@@ -10,6 +10,8 @@ import json
 import requests
 from datetime import datetime, timedelta
 import re
+from alpha_vantage.timeseries import TimeSeries
+from alpha_vantage.fundamentaldata import FundamentalData
 
 # Load environment variables and create Claude client
 load_dotenv()
@@ -1093,6 +1095,64 @@ def user_advisory_agent(user_profile, portfolio_analysis):
         "next_steps": "Claude will suggest actions"
     }
 
+def clean_ai_response_formatting(raw_response):
+    """
+    Clean AI response to prevent JSON display issues
+    """
+    try:
+        print(f"🔧 DEBUG: Raw response type: {type(raw_response)}")
+        print(f"🔧 DEBUG: Raw response starts with: {raw_response[:50]}...")
+        
+        # Remove any markdown headers that might appear
+        cleaned = raw_response.replace('**AI Portfolio Manager Reasoning:**', '').strip()
+        
+        # Check if it's pure JSON (starts and ends with braces)
+        if cleaned.startswith('{') and cleaned.endswith('}'):
+            print("🔧 DEBUG: Detected pure JSON format, extracting reasoning...")
+            import json
+            try:
+                json_data = json.loads(cleaned)
+                
+                # Try to extract the reasoning field
+                if 'ai_reasoning' in json_data:
+                    result = json_data['ai_reasoning']
+                    print(f"✅ SUCCESS: Extracted ai_reasoning field")
+                    return result
+                else:
+                    print("⚠️ No ai_reasoning field found, creating readable format...")
+                    # Create a readable version
+                    readable = f"AI Portfolio Recommendation: {json_data.get('recommendation_type', 'Portfolio Analysis')}\n\n"
+                    
+                    if 'allocations' in json_data:
+                        readable += "Recommended Allocations:\n"
+                        for stock, weight in json_data['allocations'].items():
+                            readable += f"• {stock}: {weight}%\n"
+                        readable += "\n"
+                    
+                    if 'ai_reasoning' in json_data and json_data['ai_reasoning']:
+                        readable += f"Analysis:\n{json_data['ai_reasoning']}\n\n"
+                    
+                    if 'market_outlook' in json_data:
+                        readable += f"Market Outlook: {json_data['market_outlook']}\n"
+                    
+                    if 'confidence_level' in json_data:
+                        readable += f"Confidence: {json_data['confidence_level']}"
+                    
+                    print(f"✅ SUCCESS: Created readable format")
+                    return readable
+                    
+            except json.JSONDecodeError as e:
+                print(f"❌ JSON parsing failed: {e}")
+                return cleaned
+        
+        # If it's not JSON, return as-is
+        print("🔧 DEBUG: Not JSON format, returning cleaned text")
+        return cleaned
+        
+    except Exception as e:
+        print(f"❌ Error in cleaning function: {e}")
+        return raw_response
+
 # 🔥 TRUE AI Portfolio Optimizer for Strategy 3
 def true_ai_portfolio_optimizer(selected_stocks, risk_profile, investment_amount):
     """
@@ -1107,24 +1167,52 @@ def true_ai_portfolio_optimizer(selected_stocks, risk_profile, investment_amount
     try:
         print(f"🧠 TRUE AI Portfolio Manager analyzing {selected_stocks} for {risk_profile} investor...")
         
-        # Get current stock data for analysis
+     
+ 
+# Get current stock data for analysis using Alpha Vantage
         stock_data = []
+        alpha_vantage_key = os.getenv('ALPHA_VANTAGE_API_KEY')
+        ts = TimeSeries(key=alpha_vantage_key, output_format='pandas')
+        fd = FundamentalData(key=alpha_vantage_key, output_format='pandas')
+        
         for stock in selected_stocks:
             try:
-                ticker = yf.Ticker(stock)
-                info = ticker.info
-                hist = ticker.history(period="1mo")
+                print(f"📊 Fetching data for {stock} from Alpha Vantage...")
+                
+                # Get current price and daily data
+                data, meta_data = ts.get_daily(symbol=stock, outputsize='compact')
+                current_price = data.iloc[0]['4. close'] if not data.empty else 0
+                
+                # Calculate 1-month change (compare latest vs 20 days ago)
+                if len(data) >= 20:
+                    month_ago_price = data.iloc[19]['4. close']
+                    month_change = ((current_price - month_ago_price) / month_ago_price * 100)
+                else:
+                    month_change = 0
+                
+                # Get company overview for fundamental data
+                try:
+                    overview, _ = fd.get_company_overview(symbol=stock)
+                    market_cap = float(overview.iloc[0]['MarketCapitalization']) if not overview.empty else 0
+                    pe_ratio = float(overview.iloc[0]['PERatio']) if not overview.empty and overview.iloc[0]['PERatio'] != 'None' else 'N/A'
+                except:
+                    market_cap = 0
+                    pe_ratio = 'N/A'
                 
                 stock_data.append({
                     'symbol': stock,
-                    'current_price': info.get('currentPrice', 0),
-                    'market_cap': info.get('marketCap', 0),
-                    'pe_ratio': info.get('forwardPE', 'N/A'),
-                    'month_change': ((hist['Close'][-1] - hist['Close'][0]) / hist['Close'][0] * 100) if len(hist) > 0 else 0,
-                    'sector': info.get('sector', 'Technology'),
-                    'recommendation': info.get('recommendationKey', 'hold')
+                    'current_price': float(current_price),
+                    'market_cap': int(market_cap),
+                    'pe_ratio': pe_ratio,
+                    'month_change': round(month_change, 2),
+                    'sector': 'Technology',
+                    'recommendation': 'hold'
                 })
-            except:
+                
+                print(f"✅ Successfully fetched {stock}: ${current_price:.2f}, Market Cap: ${market_cap:,}")
+                
+            except Exception as e:
+                print(f"❌ Error fetching {stock} from Alpha Vantage: {e}")
                 stock_data.append({
                     'symbol': stock,
                     'current_price': 0,
@@ -1192,12 +1280,15 @@ Be specific, confident, and provide actionable percentages that sum to 100%."""
         response = client.messages.create(
             model="claude-3-haiku-20240307",
             max_tokens=1500,
+	    temperature=0.2,  # ADD THIS LINE
             messages=[{"role": "user", "content": ai_portfolio_prompt}]
         )
         
-        claude_response = response.content[0].text
-        print(f"✅ Claude AI Portfolio Manager response received")
+       	claude_response = response.content[0].text
+        claude_response = clean_ai_response_formatting(claude_response)
+        print(f"🔧 AFTER CLEANING: {claude_response[:100]}...")
         
+        print(f"✅ Claude AI Portfolio Manager response received")
         # Try to parse JSON from Claude's response
         import re
         json_match = re.search(r'\{.*\}', claude_response, re.DOTALL)

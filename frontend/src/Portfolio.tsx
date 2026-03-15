@@ -33,18 +33,18 @@ const StepSection: React.FC<StepSectionProps> = ({
   taskDescription
 }) => (
   <div style={{
-    borderBottom: '1px solid #e2e8f0'
+    borderBottom: '1px solid rgba(255,255,255,0.06)'
   }}>
     <div 
       style={{
         padding: '40px',
-        background: isOpen ? '#f8fafc' : '#ffffff',
+        background: isOpen ? 'var(--surface2)' : 'var(--surface)',
         cursor: 'pointer',
         transition: 'background-color 0.25s ease',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        borderBottom: isOpen ? '1px solid #e2e8f0' : 'none'
+        borderBottom: isOpen ? '1px solid rgba(255,255,255,0.06)' : 'none'
       }}
       onClick={onToggle}
     >
@@ -53,7 +53,7 @@ const StepSection: React.FC<StepSectionProps> = ({
           width: '36px',
           height: '36px',
           borderRadius: '50%',
-          background: isCompleted ? 'linear-gradient(135deg, #10b981 0%, #059669 100%)' : 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)',
+          background: isCompleted ? 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)' : 'linear-gradient(135deg, #2D7EFF 0%, #818cf8 100%)',
           color: 'white',
           display: 'flex',
           alignItems: 'center',
@@ -68,14 +68,14 @@ const StepSection: React.FC<StepSectionProps> = ({
           <h3 style={{
             fontSize: '20px',
             fontWeight: '700',
-            color: '#0f172a',
+            color: 'var(--text-primary)',
             marginBottom: '6px',
             letterSpacing: '-0.3px'
           }}>
             {title}
           </h3>
           <p style={{
-            color: '#475569',
+            color: 'var(--text-secondary)',
             fontSize: '15px',
             letterSpacing: '-0.1px',
             margin: 0
@@ -96,8 +96,8 @@ const StepSection: React.FC<StepSectionProps> = ({
       <div style={{
         display: 'block',
         padding: '40px 40px 0px 40px',
-        background: '#f8fafc',
-        borderTop: '1px solid #e2e8f0'
+        background: 'var(--surface2)',
+        borderTop: '1px solid rgba(255,255,255,0.08)'
       }}>
         {taskDescription && (
           <div style={{
@@ -236,7 +236,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
             color: 'var(--text-primary)',
             letterSpacing: '-0.5px'
           }}>
-            AlphaKnaut
+            AlphaKnaut V2
           </div>
         </div>
         <nav style={{
@@ -302,7 +302,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
         WebkitBackgroundClip: 'text',
         WebkitTextFillColor: 'transparent'
       }}>
-        AlphaKnaut: Building Institutional-Grade AI for Portfolio Strategy
+        AlphaKnaut V2: Building Institutional-Grade AI for Portfolio Strategy
       </h1>
       <p style={{
         fontSize: '1.25rem',
@@ -447,6 +447,71 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
           </p>
         </div>
       </div>
+
+{/* V2 as completely separate "NEW" section */}
+<div style={{
+  background: 'linear-gradient(135deg, #64748b 0%, #94a3b8 100%)',
+  padding: '3rem 2rem',
+  borderRadius: '16px',
+  margin: '3rem 0',
+  position: 'relative',
+  boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.2)'
+}}>
+  {/* "NEW" badge */}
+  <div style={{
+    position: 'absolute',
+    top: '1rem',
+    right: '1rem',
+    background: '#10b981',
+    color: '#ffffff',
+    padding: '8px 16px',
+    borderRadius: '20px',
+    fontSize: '12px',
+    fontWeight: '700',
+    letterSpacing: '1px'
+  }}>
+    NEW - SEPTEMBER 2025
+  </div>
+  <h2 style={{
+    fontSize: '1.75rem',
+    fontWeight: '700',
+    color: '#0f172a',
+    marginBottom: '1rem',
+    letterSpacing: '-0.3px'
+  }}>
+    AlphaKnaut V2: Advanced Risk Analytics Engine
+  </h2>
+  
+  <div style={{
+    color: '#0f172a',
+    fontSize: '1rem',
+    lineHeight: '1.7'
+  }}>
+    <p style={{ marginBottom: '1rem' }}>
+      <strong style={{ color: '#0f172a', fontWeight: '600' }}>The Next Evolution:</strong> Following the initial platform completion in Summer 2025, I spent September 2025 addressing this gap. Traditional portfolio tools provide basic risk scores, but institutional investors demand precise probability distributions and tail risk analysis. This drove the development of V2's comprehensive Monte Carlo simulation engine.
+    </p>
+    
+    <p style={{ marginBottom: '1rem' }}>
+      <strong style={{ color: '#0f172a', fontWeight: '600' }}>Institutional-Grade Risk Modeling:</strong> V2 introduces quantitative risk analytics that mirror those used by hedge funds and institutional asset managers. The Monte Carlo engine runs 10,000 probabilistic simulations, each representing a possible future market scenario based on 7 years of historical return patterns. This captures critical market events that shape risk profiles: the 2018 volatility spike, 2020's unprecedented crash and recovery, and the 2022-2023 interest rate regime shift.
+    </p>
+    
+    <p style={{ marginBottom: '1rem' }}>
+      <strong style={{ color: '#0f172a', fontWeight: '600' }}>Beyond Basic Risk Assessment:</strong> The system calculates Value-at-Risk (VaR) at both 95% and 99% confidence levels—the industry standard for regulatory capital requirements and internal risk limits. But V2 goes further, implementing Expected Shortfall analysis that quantifies average losses when VaR thresholds are breached. This addresses VaR's critical limitation: it reveals the probability of extreme losses but not their magnitude.
+    </p>
+    
+    <p style={{ marginBottom: '1rem' }}>
+      <strong style={{ color: '#0f172a', fontWeight: '600' }}>The Data Science Challenge:</strong> Implementing robust Monte Carlo simulation required solving several technical problems. The engine must dynamically calculate correlation matrices between assets, model multivariate return distributions, and simulate thousands of daily price paths while maintaining computational efficiency. The transition from 2-year to 7-year historical datasets proved crucial—initial results showed unrealistically optimistic risk estimates (7.8% probability of loss) that ignored major market disruptions.
+    </p>
+    
+   <p style={{ marginBottom: '1rem' }}>
+  <strong style={{ color: '#0f172a', fontWeight: '600' }}>Real Risk, Real Numbers:</strong> V2's enhanced modeling reveals more realistic risk profiles. Portfolio probability of loss estimates increased to the 15-25% range, and maximum drawdown projections expanded from 30% to 40-50%—figures that align with actual technology portfolio performance during market stress. This demonstrates how sample size and historical coverage directly impact quantitative model reliability. V2 transforms AlphaKnaut from a portfolio construction tool into a comprehensive risk management platform. Users can now quantify the statistical likelihood of various outcomes, understand correlation breakdowns during stress periods, and make informed decisions about position sizing and portfolio concentration. This bridges the gap between academic portfolio theory and practical risk management—the intersection where institutional finance operates.
+</p>
+
+<p style={{ marginBottom: '0' }}>
+  The development of V2's risk engine reinforced my conviction that the future lies in systems that don't just optimize for returns, but quantify and communicate the uncertainties inherent in those projections. This is the foundation of institutional decision-making.
+</p>
+  </div>
+</div>
 
       <div style={{ marginBottom: '3rem' }}>
         <h2 style={{
@@ -887,7 +952,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
           University of Toronto | Financial Economics & FinTech
         </div>
         <a 
-          href="https://linkedin.com/in/riya-pradhan" 
+          href="https://www.linkedin.com/in/riya-pradhan" 
           style={{
             color: '#60a5fa',
             textDecoration: 'none'
@@ -938,6 +1003,9 @@ const Portfolio: React.FC = () => {
   const [benchmarkData, setBenchmarkData] = useState<any>(null);
   const [benchmarkLoading, setBenchmarkLoading] = useState<boolean>(false);
 
+  const [monteCarloResults, setMonteCarloResults] = useState<any>(null);
+  const [monteCarloLoading, setMonteCarloLoading] = useState<boolean>(false);
+
   // Step visibility state
   const [openSteps, setOpenSteps] = useState<{[key: number]: boolean}>({
     1: true,
@@ -955,301 +1023,155 @@ const Portfolio: React.FC = () => {
 
   const magnificent7 = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'META', 'NVDA', 'TSLA'];
 
-  // CSS Variables - MOBILE RESPONSIVE VERSION
+  // CSS Variables - v3 Dark Design
   const cssVars = `
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500&display=swap');
+
     :root {
-      --primary: #0a0e27;
-      --primary-light: #1a1f3a;
-      --secondary: #2d3748;
-      --accent: #3b82f6;
-      --accent-light: #60a5fa;
-      --accent-purple: #8b5cf6;
-      --accent-emerald: #10b981;
-      --accent-rose: #f43f5e;
-      --surface: #ffffff;
-      --surface-elevated: #f8fafc;
-      --surface-hover: #f1f5f9;
-      --surface-accent: rgba(59, 130, 246, 0.03);
-      --surface-purple: rgba(139, 92, 246, 0.03);
-      --surface-emerald: rgba(16, 185, 129, 0.03);
-      --border: #e2e8f0;
-      --border-light: #f1f5f9;
-      --border-accent: rgba(59, 130, 246, 0.2);
-      --text-primary: #0f172a;
-      --text-secondary: #475569;
-      --text-muted: #64748b;
-      --success: #10b981;
-      --warning: #f59e0b;
-      --error: #ef4444;
-      --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-      --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
-      --gradient-warm: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
-      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      --shadow-accent: 0 10px 15px -3px rgba(59, 130, 246, 0.1), 0 4px 6px -2px rgba(59, 130, 246, 0.05);
+      --bg:        #080E1A;
+      --bg2:       #0B1220;
+      --surface:   #0F1828;
+      --surface2:  #131E2E;
+      --line:      rgba(255,255,255,0.06);
+      --line2:     rgba(255,255,255,0.10);
+      --line3:     rgba(255,255,255,0.16);
+
+      --accent:        #2D7EFF;
+      --accent-light:  #5A9FFF;
+      --accent-dim:    rgba(45,126,255,0.10);
+      --accent-purple: #818cf8;
+      --accent-emerald:#22c55e;
+      --accent-rose:   #f43f5e;
+
+      --text-primary:   #F4F7FF;
+      --text-secondary: #B8C4D8;
+      --text-muted:     #6B7A94;
+      --text-faint:     #3A4558;
+
+      --success: #22C55E;
+      --warning: #F59E0B;
+      --error:   #EF4444;
+
+      --surface-elevated: #131E2E;
+      --surface-hover:    #1a2640;
+      --surface-accent:   rgba(45,126,255,0.06);
+      --surface-purple:   rgba(129,140,248,0.06);
+      --surface-emerald:  rgba(34,197,94,0.06);
+      --border:           rgba(255,255,255,0.08);
+      --border-light:     rgba(255,255,255,0.05);
+      --border-accent:    rgba(45,126,255,0.25);
+
+      --gradient-primary: linear-gradient(135deg, #2D7EFF 0%, #818cf8 100%);
+      --gradient-success: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      --gradient-warm:    linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+
+      --shadow-sm:     0 1px 2px 0 rgba(0,0,0,0.3);
+      --shadow-md:     0 4px 6px -1px rgba(0,0,0,0.4), 0 2px 4px -1px rgba(0,0,0,0.2);
+      --shadow-lg:     0 10px 15px -3px rgba(0,0,0,0.4), 0 4px 6px -2px rgba(0,0,0,0.2);
+      --shadow-xl:     0 20px 25px -5px rgba(0,0,0,0.5), 0 10px 10px -5px rgba(0,0,0,0.2);
+      --shadow-accent: 0 10px 15px -3px rgba(45,126,255,0.15), 0 4px 6px -2px rgba(45,126,255,0.08);
     }
 
-    /* MOBILE RESPONSIVE FIXES */
-    * {
-      box-sizing: border-box;
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0; padding: 0;
+      overflow-x: hidden;
+      background: #080E1A;
     }
 
     body {
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      color: #F4F7FF;
     }
 
-    /* Header mobile fixes */
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: #080E1A; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 2px; }
+
+    /* Recharts overrides for dark mode */
+    .recharts-cartesian-grid-horizontal line,
+    .recharts-cartesian-grid-vertical line {
+      stroke: rgba(255,255,255,0.06) !important;
+    }
+    .recharts-tooltip-wrapper .recharts-default-tooltip {
+      background: #131E2E !important;
+      border: 1px solid rgba(255,255,255,0.10) !important;
+      color: #F4F7FF !important;
+    }
+    .recharts-legend-item-text { color: #B8C4D8 !important; }
+    .recharts-text { fill: #6B7A94 !important; }
+
+    /* Header mobile */
     @media (max-width: 768px) {
-      header > div {
-        padding: 0 16px !important;
-        height: 70px !important;
-      }
-      
-      header > div > div:first-child {
-        gap: 12px !important;
-      }
-      
-      header > div > div:first-child > div:last-child {
-        font-size: 20px !important;
-      }
+      header > div { padding: 0 16px !important; height: 64px !important; }
+      header > div > div:first-child { gap: 10px !important; }
+      header > div > div:first-child > div:last-child { font-size: 17px !important; }
     }
 
-    /* Hero section mobile fixes */
+    /* Hero mobile */
     @media (max-width: 768px) {
       section[style*="padding: 120px"] {
-        padding: 80px 16px 60px !important;
-        margin-top: 70px !important;
+        padding: 70px 16px 50px !important;
+        margin-top: 64px !important;
       }
-      
       h1[style*="fontSize: '80px'"] {
-        font-size: 48px !important;
+        font-size: 40px !important;
         line-height: 1.1 !important;
-        letter-spacing: -1.5px !important;
-        margin-bottom: 16px !important;
-      }
-      
-      p[style*="fontSize: '28px'"] {
-        font-size: 20px !important;
-        line-height: 1.3 !important;
-        margin-bottom: 12px !important;
-      }
-      
-      p[style*="fontSize: '20px'"] {
-        font-size: 16px !important;
-        margin-bottom: 32px !important;
-      }
-      
-      button[style*="padding: 18px 36px"] {
-        padding: 14px 28px !important;
-        font-size: 15px !important;
-      }
-    }
-
-    @media (max-width: 480px) {
-      h1[style*="fontSize: '80px'"], h1[style*="font-size: 48px"] {
-        font-size: 36px !important;
         letter-spacing: -1px !important;
       }
-      
-      p[style*="fontSize: '28px'"], p[style*="font-size: 20px"] {
-        font-size: 18px !important;
-      }
-      
-      p[style*="fontSize: '20px'"], p[style*="font-size: 16px"] {
-        font-size: 14px !important;
-      }
     }
 
-    /* Stats section mobile fixes */
-    @media (max-width: 768px) {
-      section[style*="background: #000000"] > div {
-        padding: 60px 16px !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 32px !important;
-      }
-      
-      section[style*="background: #000000"] div[style*="fontSize: '48px'"] {
-        font-size: 36px !important;
-      }
-      
-      section[style*="background: #000000"] div[style*="fontSize: '16px'"] {
-        font-size: 14px !important;
-      }
-    }
-
-    @media (max-width: 480px) {
-      section[style*="background: #000000"] > div {
-        grid-template-columns: 1fr !important;
-      }
-    }
-
-    /* Main section mobile fixes */
-    @media (max-width: 768px) {
-      section[style*="maxWidth: '1200px'"] {
-        padding: 16px 16px !important;
-      }
-      
-      h2[style*="fontSize: '56px'"] {
-        font-size: 36px !important;
-        margin-bottom: 16px !important;
-      }
-      
-      p[style*="fontSize: '22px'"] {
-        font-size: 18px !important;
-      }
-    }
-
-    @media (max-width: 480px) {
-      h2[style*="fontSize: '56px'"], h2[style*="font-size: 36px"] {
-        font-size: 28px !important;
-      }
-      
-      p[style*="fontSize: '22px'"], p[style*="font-size: 18px"] {
-        font-size: 16px !important;
-      }
-    }
-
-    /* Step sections mobile fixes */
-    @media (max-width: 768px) {
-      div[style*="padding: 40px"] {
-        padding: 24px 16px !important;
-      }
-      
-      h3[style*="fontSize: '20px'"] {
-        font-size: 18px !important;
-      }
-      
-      div[style*="gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))'"] {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
-        gap: 16px !important;
-      }
-      
-      div[style*="padding: 28px"] {
-        padding: 20px 16px !important;
-      }
-    }
-
-    @media (max-width: 480px) {
+    /* Grid mobile */
+    @media (max-width: 640px) {
       div[style*="gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))'"],
       div[style*="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr))"] {
         grid-template-columns: 1fr !important;
       }
-      
-      div[style*="padding: 40px"], div[style*="padding: 24px 16px"] {
-        padding: 16px 12px !important;
-      }
+      div[style*="padding: 40px"] { padding: 20px 16px !important; }
     }
 
-    /* Text wrapping fixes */
-    h1, h2, h3, p, div {
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-      hyphens: auto;
-    }
+    /* Text wrapping */
+    h1, h2, h3, p, div { word-wrap: break-word; overflow-wrap: break-word; hyphens: auto; }
 
- /* Button mobile fixes */
+    /* Button mobile */
     @media (max-width: 480px) {
-      button {
-        min-width: auto !important;
-        width: 100% !important;
-        max-width: 100% !important;
-      }
+      button { min-width: auto !important; width: 100% !important; max-width: 100% !important; }
     }
 
-    /* Progress indicator mobile fixes */
+    /* Progress indicator mobile */
     @media (max-width: 768px) {
-      div[style*="display: 'flex'"][style*="justifyContent: 'center'"][style*="margin: '64px 0'"] {
+      div[style*="margin: '64px 0'"] {
         margin: 32px 16px !important;
-        padding: 0 16px !important;
         overflow-x: auto !important;
-        -webkit-overflow-scrolling: touch !important;
       }
-      
-      div[style*="display: 'flex'"][style*="justifyContent: 'center'"] > div {
-        min-width: 80px !important;
-        flex-shrink: 0 !important;
-      }
-      
-      div[style*="width: '60px'"][style*="height: '2px'"] {
-        min-width: 40px !important;
-        flex-shrink: 0 !important;
-      }
+      div[style*="width: '60px'"][style*="height: '2px'"] { min-width: 32px !important; }
     }
 
-    @media (max-width: 480px) {
-      div[style*="display: 'flex'"][style*="justifyContent: 'center'"][style*="margin: '64px 0'"] {
-        flex-wrap: nowrap !important;
-        justify-content: flex-start !important;
-        margin: 24px 8px !important;
-        padding: 0 8px !important;
-      }
-      
-      div[style*="display: 'flex'"][style*="justifyContent: 'center'"] > div {
-        min-width: 70px !important;
-      }
-      
-      span[style*="fontSize: '14px'"] {
-        font-size: 12px !important;
-      }
-    }
-
-    /* Dropdown arrow fixes */
-    @media (max-width: 768px) {
-      div[style*="transform: rotate(180deg)"],
-      div[style*="transform: rotate(0deg)"] {
-        min-width: 20px !important;
-        width: 20px !important;
-        height: 20px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        flex-shrink: 0 !important;
-      }
-      
-      div[style*="display: 'flex'"][style*="alignItems: 'center'"][style*="justifyContent: 'space-between'"] {
-        align-items: flex-start !important;
-        gap: 16px !important;
-      }
-      
-      div[style*="display: 'flex'"][style*="alignItems: 'center'"][style*="gap: '20px'"] {
-        flex: 1 !important;
-        min-width: 0 !important;
-      }
-    }
-
-    /* Mobile Notice */
+    /* Mobile notice */
     .mobile-notice {
       display: none;
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      right: 20px;
-      background: rgba(15, 23, 42, 0.95);
-      color: white;
-      padding: 16px;
-      border-radius: 12px;
-      font-size: 14px;
-      text-align: center;
-      z-index: 1000;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(10px);
+      position: fixed; bottom: 20px; left: 20px; right: 20px;
+      background: rgba(8,14,26,0.96);
+      color: #B8C4D8;
+      padding: 14px 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.10);
+      font-size: 13px; text-align: center;
+      z-index: 9999;
+      backdrop-filter: blur(12px);
     }
+    @media (max-width: 768px) { .mobile-notice { display: block; } }
 
-    /* ADD THIS NEW MEDIA QUERY FOR MOBILE NOTICE */
-@media (max-width: 768px) {
-  .mobile-notice {
-    display: block;
-  }
-}      
+    /* Dropdown arrow */
+    @media (max-width: 768px) {
       div[style*="transform: rotate(180deg)"],
       div[style*="transform: rotate(0deg)"] {
-        position: absolute !important;
-        top: 16px !important;
-        right: 16px !important;
+        min-width: 20px !important; width: 20px !important; height: 20px !important;
+        display: flex !important; align-items: center !important;
+        justify-content: center !important; flex-shrink: 0 !important;
       }
     }
   `;
@@ -1295,25 +1217,25 @@ useEffect(() => {
   return () => window.removeEventListener('resize', handleResize);
 }, []);
 
-  const fetchStockData = async () => {
-    try {
-      const response = await axios.get('https://alphaknaut.onrender.com/api/stocks/magnificent7');
-      setStockData(response.data.data);
-    } catch (error) {
-      console.error('Error fetching stock data:', error);
-    }
-  };
+ const fetchStockData = async () => {
+  try {
+    const response = await axios.get('http://127.0.0.1:5000/api/stocks/magnificent7');
+    setStockData(response.data.data);
+  } catch (error) {
+    console.error('Error fetching stock data:', error);
+  }
+};
 
   const getEconomicIntelligence = async () => {
-    setEconomicLoading(true);
-    try {
-      const response = await axios.get('https://alphaknaut.onrender.com/api/market/economic-intelligence');
-      setEconomicData(response.data);
-    } catch (error) {
-      console.error('Error fetching economic intelligence:', error);
-    }
-    setEconomicLoading(false);
-  };
+  setEconomicLoading(true);
+  try {
+    const response = await axios.get('http://127.0.0.1:5000/api/market/economic-intelligence');
+    setEconomicData(response.data);
+  } catch (error) {
+    console.error('Error fetching economic intelligence:', error);
+  }
+  setEconomicLoading(false);
+};
 
   // All existing functions - UNCHANGED
   const getCurrentPortfolioWeights = () => {
@@ -1344,12 +1266,12 @@ useEffect(() => {
     try {
       console.log('🔮 Getting NEWS-ENHANCED predictions with weights:', weightsToUse);
       
-      const response = await axios.post('https://alphaknaut.onrender.com/api/portfolio/enhanced-predictions-fixed', {
-        weights: weightsToUse,
-        risk_profile: riskProfile,
-        amount: investmentAmount,
-        selected_years: selectedTimeframe
-      });
+      const response = await axios.post('http://127.0.0.1:5000/api/portfolio/enhanced-predictions-fixed', {
+  weights: weightsToUse,
+  risk_profile: riskProfile,
+  amount: investmentAmount,
+  selected_years: selectedTimeframe
+});
       
       console.log('✅ FIXED: Enhanced predictions received:', response.data);
       console.log('✅ Enhanced predictions structure:', response.data.enhanced_predictions);
@@ -1372,7 +1294,7 @@ useEffect(() => {
     try {
       console.log('🤖 Getting AI Portfolio Optimization...');
       
-      const response = await axios.post('https://alphaknaut.onrender.com/api/portfolio/ai-optimize', {
+      const response = await axios.post('http://127.0.0.1:5000/api/portfolio/ai-optimize', {
         stocks: selectedStocks,
         risk_profile: riskProfile,
         amount: investmentAmount
@@ -1404,7 +1326,7 @@ useEffect(() => {
     try {
       console.log('📊 Getting AI-enhanced 7-benchmark comparison with weights:', weightsToUse);
       
-     const response = await axios.post('https://alphaknaut.onrender.com/api/portfolio/benchmark-comparison-fixed', {
+  const response = await axios.post('http://127.0.0.1:5000/api/portfolio/benchmark-comparison-fixed', {
   weights: weightsToUse,
   amount: investmentAmount,
   years: selectedTimeframe,
@@ -1433,7 +1355,7 @@ useEffect(() => {
     try {
       console.log('🔍 Fetching market intelligence for:', selectedStocks);
       
-      const response = await axios.post('https://alphaknaut.onrender.com/api/market/news-sentiment', {
+    const response = await axios.post('http://127.0.0.1:5000/api/market/news-sentiment', {
         stocks: selectedStocks
       });
       
@@ -1502,7 +1424,7 @@ useEffect(() => {
     try {
       console.log('🔍 Getting AI alternatives for Strategy 2...');
       
-      const response = await axios.post('https://alphaknaut.onrender.com/api/portfolio/analyze', {
+     const response = await axios.post('http://127.0.0.1:5000/api/portfolio/analyze', {
         weights: customWeights,
         risk_profile: riskProfile,
         amount: investmentAmount
@@ -1515,6 +1437,35 @@ useEffect(() => {
       console.error('Error getting AI optimization:', error);
     }
   };
+
+const getMonteCarloAnalysis = async () => {
+  const weightsToUse = getCurrentPortfolioWeights();
+
+  if (Object.keys(weightsToUse).length === 0) {
+    alert('Please set your portfolio allocation first!');
+    return;
+  }
+  
+  setMonteCarloLoading(true);
+  try {
+    console.log('🎲 Running Monte Carlo analysis...');
+    
+    const response = await axios.post('http://127.0.0.1:5000/api/portfolio/monte-carlo-analysis', {
+      weights: weightsToUse,
+      amount: investmentAmount,
+      years: selectedTimeframe,
+      simulations: 10000
+    });
+    
+    console.log('✅ Monte Carlo results:', response.data);
+    setMonteCarloResults(response.data);
+    
+  } catch (error) {
+    console.error('❌ Monte Carlo error:', error);
+    alert('Unable to run Monte Carlo simulation. Please check your backend connection.');
+  }
+  setMonteCarloLoading(false);
+};
 
   const toggleStep = (stepNumber: number) => {
     setOpenSteps(prev => {
@@ -1577,7 +1528,7 @@ if (showAboutPage) {
   return (
     <div style={{
       fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
-      background: 'var(--surface)',
+      background: 'var(--bg)',
       color: 'var(--text-primary)',
       lineHeight: '1.6',
       WebkitFontSmoothing: 'antialiased',
@@ -1587,225 +1538,257 @@ if (showAboutPage) {
       {/* Inject CSS Variables */}
       <style>{cssVars}</style>
 
-	  {/* ADD THIS HERE */}
-    <div className="mobile-notice">
-      📱 For the best experience, please view on desktop or tablet
-    </div>
-      
+
+      {/* Mobile Notice */}
+      <div className="mobile-notice">
+        📱 For the best experience, please view on desktop or tablet
+      </div>
+
       {/* Header */}
       <header style={{
-        borderBottom: '1px solid var(--text-primary)',
-        background: 'rgba(255, 255, 255, 0.98)',
         position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
+        top: 0, left: 0, right: 0,
         zIndex: 1000,
-        backdropFilter: 'blur(12px)',
-        boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
+        height: '60px',
+        background: 'rgba(8,14,26,0.92)',
+        backdropFilter: 'blur(20px)',
+        borderBottom: '1px solid rgba(255,255,255,0.08)',
+        display: 'flex',
+        alignItems: 'center',
       }}>
- 
         <div style={{
+          width: '100%',
           maxWidth: '1200px',
           margin: '0 auto',
           padding: '0 32px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          height: '88px'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          {/* Logo */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <div style={{
-              width: '48px',
-              height: '48px',
-              position: 'relative',
-              filter: 'drop-shadow(0 0 15px rgba(7, 12, 22, 0.3))'
-            }}>
-              {/* Quantum Logo Animation */}
-              <div style={{
-                position: 'absolute',
-                width: '100%',
-                height: '100%',
-                background: 'radial-gradient(circle, rgba(7, 12, 22, 0.15) 0%, rgba(71, 85, 105, 0.1) 40%, rgba(100, 116, 139, 0.05) 70%, transparent 100%)',
-                borderRadius: '50%',
-                animation: 'quantumPulse 4s ease-in-out infinite',
-                filter: 'blur(0.5px)'
-              }} />
-              <style>
-                {`
-                  @keyframes quantumPulse {
-                    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.6; }
-                    50% { transform: scale(1.1) rotate(180deg); opacity: 0.9; }
-                  }
-                  @keyframes quantumFloat {
-                    0%, 100% { transform: translateY(0px) scale(1) rotate(0deg); opacity: 0.9; }
-                    33% { transform: translateY(-6px) scale(1.3) rotate(120deg); opacity: 1; }
-                    66% { transform: translateY(-3px) scale(0.9) rotate(240deg); opacity: 0.95; }
-                  }
-                `}
-              </style>
-              {/* Quantum States */}
-              {[
-                { top: '15%', left: '25%', delay: '0s', size: '3px', color: '#070c16' },
-                { top: '35%', left: '75%', delay: '1s', size: '4px', color: '#475569' },
-                { top: '65%', left: '15%', delay: '2s', size: '2px', color: '#0c1426' },
-                { top: '85%', left: '65%', delay: '3s', size: '5px', color: '#64748b' },
-                { top: '25%', left: '85%', delay: '4s', size: '3px', color: '#1e3a8a' },
-                { top: '75%', left: '45%', delay: '5s', size: '3px', color: '#374151' },
-                { top: '50%', left: '50%', delay: '0s', size: '6px', color: '#ffffff', border: '1px solid rgba(148, 163, 184, 0.4)' }
-              ].map((state, index) => (
-                <div key={index} style={{
-                  position: 'absolute',
-                  top: state.top,
-                  left: state.left,
-                  width: state.size,
-                  height: state.size,
-                  background: state.color === '#ffffff' ? 'radial-gradient(circle, #ffffff 0%, #070c16 100%)' : state.color,
-                  borderRadius: '50%',
-                  animation: `quantumFloat 5s ease-in-out infinite`,
-                  animationDelay: state.delay,
-                  filter: 'brightness(1.2) saturate(1.1)',
-                  boxShadow: `0 0 8px ${state.color}`,
-                  border: state.border || 'none'
-                }} />
-              ))}
-            </div>
-            <div style={{
-              fontSize: '24px',
-              fontWeight: '700',
+              fontSize: '17px',
+              fontWeight: '600',
               color: 'var(--text-primary)',
-              letterSpacing: '-0.5px'
+              letterSpacing: '0.01em',
+              fontFamily: "'Inter', sans-serif",
             }}>
               AlphaKnaut
             </div>
+            <div style={{ width: '1px', height: '14px', background: 'rgba(255,255,255,0.14)' }} />
+            <div style={{
+              fontFamily: "'IBM Plex Mono', monospace",
+              fontSize: '10px',
+              letterSpacing: '0.12em',
+              color: 'var(--text-muted)',
+              textTransform: 'uppercase',
+            }}>
+              Macro Intelligence
+            </div>
           </div>
-          <nav style={{
-  display: 'flex',
-  gap: '32px',
-  alignItems: 'center'
-}}>
-  <button
-    onClick={() => setShowAboutPage(true)}
-    style={{
-      color: 'var(--text-secondary)',
-      textDecoration: 'none',
-      fontWeight: '500',
-      fontSize: '15px',
-      transition: 'all 0.2s ease',
-      cursor: 'pointer',
-      padding: '8px 16px',
-      borderRadius: '6px',
-      background: 'transparent',
-      border: 'none'
-    }}
-    onMouseOver={(e) => {
-      e.currentTarget.style.color = 'var(--accent)';
-      e.currentTarget.style.background = 'var(--surface-accent)';
-    }}
-    onMouseOut={(e) => {
-      e.currentTarget.style.color = 'var(--text-secondary)';
-      e.currentTarget.style.background = 'transparent';
-    }}
-  >
-    About
-  </button>
-</nav>
+
+          {/* Right side */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+            {/* Live indicator */}
+            <div style={{
+              display: 'flex', alignItems: 'center', gap: '6px',
+              fontFamily: "'IBM Plex Mono', monospace",
+              fontSize: '10px', letterSpacing: '0.1em',
+              color: 'var(--success)', textTransform: 'uppercase',
+            }}>
+              <div style={{
+                width: '5px', height: '5px', borderRadius: '50%',
+                background: 'var(--success)',
+                boxShadow: '0 0 6px var(--success)',
+                animation: 'pulse 2.5s infinite',
+              }} />
+              Live
+            </div>
+            <style>{`
+              @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
+              @keyframes headerFadeIn { from{opacity:0;transform:translateY(-4px)} to{opacity:1;transform:none} }
+            `}</style>
+
+            {/* About button */}
+            <button
+              onClick={() => setShowAboutPage(true)}
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: '13px', fontWeight: '400',
+                color: 'var(--text-muted)',
+                background: 'transparent', border: 'none',
+                cursor: 'pointer', padding: '6px 14px',
+                borderRadius: '4px',
+                transition: 'all 0.15s',
+                letterSpacing: '0.01em',
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.color = 'var(--text-secondary)';
+                e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.color = 'var(--text-muted)';
+                e.currentTarget.style.background = 'transparent';
+              }}
+            >
+              About
+            </button>
+
+            {/* CTA */}
+            <button
+              onClick={() => {
+                document.querySelector('#portfolio-constructor')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: '12px', fontWeight: '500',
+                letterSpacing: '0.02em',
+                padding: '7px 18px',
+                background: 'var(--accent)',
+                color: '#fff',
+                border: 'none', borderRadius: '4px',
+                cursor: 'pointer',
+                transition: 'background 0.15s, transform 0.15s',
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.background = 'var(--accent-light)';
+                e.currentTarget.style.transform = 'translateY(-1px)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.background = 'var(--accent)';
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              Launch Platform →
+            </button>
+          </div>
         </div>
       </header>
 
       {/* Hero Section */}
       <section style={{
-        padding: '120px 32px 80px',
+        padding: '140px 32px 80px',
         maxWidth: '1200px',
         margin: '0 auto',
-        marginTop: '88px'
+        marginTop: '60px',
+        position: 'relative',
       }}>
-        <div style={{ maxWidth: '840px' }}>
+        {/* Subtle grid background */}
+        <div style={{
+          position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none',
+          backgroundImage: 'linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)',
+          backgroundSize: '64px 64px',
+          maskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%)',
+        }} />
+        {/* Glow */}
+        <div style={{
+          position: 'absolute', top: '0', left: '-5%',
+          width: '50vw', height: '50vw', zIndex: 0, pointerEvents: 'none',
+          background: 'radial-gradient(circle, rgba(45,126,255,0.07) 0%, transparent 65%)',
+        }} />
+
+        <div style={{ maxWidth: '760px', position: 'relative', zIndex: 1 }}>
+          {/* Eyebrow */}
           <div style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '10px',
-            padding: '10px 20px',
-            background: 'var(--surface-accent)',
-            border: '1px solid var(--border-accent)',
-            borderRadius: '28px',
-            fontSize: '14px',
-            fontWeight: '600',
-            color: 'var(--accent)',
-            marginBottom: '-20px'
+            display: 'inline-flex', alignItems: 'center', gap: '10px',
+            fontFamily: "'IBM Plex Mono', monospace",
+            fontSize: '10px', letterSpacing: '0.16em', textTransform: 'uppercase',
+            color: 'var(--accent-light)',
+            marginBottom: '1.8rem',
           }}>
-            <span>🚀</span>
-            Beyond the Algorithm. Investing, Evolved.
+            <div style={{ width: '20px', height: '1px', background: 'var(--accent)' }} />
+            AI-Powered Macro Intelligence · Magnificent 7
           </div>
-         <h1 style={{
-  fontSize: window.innerWidth <= 768 ? (window.innerWidth <= 480 ? '36px' : '48px') : '80px',
-  fontWeight: '800',
-  lineHeight: window.innerWidth <= 768 ? '1.1' : '1.05',
-  background: 'linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 70%, var(--accent-purple) 100%)',
-  WebkitBackgroundClip: 'text',
-  WebkitTextFillColor: 'transparent',
-  marginBottom: '12px',
-  letterSpacing: window.innerWidth <= 768 ? '-1.5px' : '-2.5px',
-  wordWrap: 'break-word',
-  overflowWrap: 'break-word',
-  hyphens: 'auto'
-}}>
-  AI-Powered Portfolio Optimization
-</h1>
+
+          <h1 style={{
+            fontSize: window.innerWidth <= 768 ? (window.innerWidth <= 480 ? '36px' : '44px') : '72px',
+            fontWeight: '300',
+            fontFamily: "'Inter', sans-serif",
+            lineHeight: window.innerWidth <= 768 ? '1.15' : '1.08',
+            color: 'var(--text-primary)',
+            marginBottom: '1.5rem',
+            letterSpacing: window.innerWidth <= 768 ? '-1px' : '-2px',
+            wordWrap: 'break-word',
+            overflowWrap: 'break-word',
+          }}>
+            AI-Powered Portfolio<br/>
+            <span style={{ fontWeight: '600' }}>Optimization</span>
+          </h1>
+
           <p style={{
-            fontSize: '28px',
+            fontSize: '17px',
+            fontWeight: '300',
             color: 'var(--text-secondary)',
-            marginBottom: '16px',
-            lineHeight: '1.3',
-            fontWeight: '500',
-            letterSpacing: '-0.5px'
+            lineHeight: '1.8',
+            marginBottom: '2.5rem',
+            letterSpacing: '0.01em',
+            maxWidth: '520px',
           }}>
-            Precision-built portfolios centered on the Magnificent 7 — tech's most dominant leaders
+            Precision-built portfolios centered on the Magnificent 7 — combining real-time market intelligence, 
+            macroeconomic signals, and institutional-grade AI reasoning to surface actionable portfolio insights.
           </p>
-          <p style={{
-            fontSize: '20px',
-            color: 'var(--text-muted)',
-            lineHeight: '1.6',
-            marginBottom: '40px',
-            letterSpacing: '-0.2px'
+
+          {/* Stats row */}
+          <div style={{
+            display: 'flex', gap: '0',
+            borderTop: '1px solid rgba(255,255,255,0.08)',
+            paddingTop: '2rem',
+            marginBottom: '2.5rem',
           }}>
-            Harnessing advanced AI to combine real-time market insights, dynamic risk assessment, 
-            and institutional-grade optimization. Designed for sophisticated investors targeting alpha 
-            and smart exposure to the forefront of innovation.
-          </p>
+            {[
+              { val: '$17.4T', lbl: 'Combined Market Cap' },
+              { val: '34.1%', lbl: 'S&P 500 Weight' },
+              { val: 'Claude AI', lbl: 'Reasoning Engine' },
+              { val: '6 weeks', lbl: 'Built from zero' },
+            ].map((s, i) => (
+              <div key={i} style={{
+                paddingRight: '2rem', marginRight: '2rem',
+                borderRight: i < 3 ? '1px solid rgba(255,255,255,0.08)' : 'none',
+              }}>
+                <div style={{
+                  fontFamily: "'IBM Plex Mono', monospace",
+                  fontSize: '16px', fontWeight: '500',
+                  color: 'var(--text-primary)', display: 'block', marginBottom: '3px',
+                }}>{s.val}</div>
+                <div style={{
+                  fontSize: '11px', color: 'var(--text-muted)', letterSpacing: '0.01em',
+                }}>{s.lbl}</div>
+              </div>
+            ))}
+          </div>
+
           <button
             onClick={() => {
-              document.querySelector('#portfolio-constructor')?.scrollIntoView({ 
-                behavior: 'smooth' 
-              });
+              document.querySelector('#portfolio-constructor')?.scrollIntoView({ behavior: 'smooth' });
             }}
             style={{
-              background: 'var(--gradient-primary)',
-              color: 'white',
-              padding: '18px 36px',
-              borderRadius: '10px',
-              border: 'none',
-              fontWeight: '600',
-              fontSize: '17px',
+              fontFamily: "'Inter', sans-serif",
+              fontSize: '13px', fontWeight: '500',
+              letterSpacing: '0.02em',
+              padding: '12px 28px',
+              background: 'var(--accent)',
+              color: '#fff',
+              border: 'none', borderRadius: '4px',
               cursor: 'pointer',
-              transition: 'all 0.25s ease',
-              boxShadow: 'var(--shadow-accent)',
-              letterSpacing: '-0.2px'
+              transition: 'background 0.15s, transform 0.15s, box-shadow 0.15s',
+              boxShadow: '0 6px 20px rgba(45,126,255,0.2)',
             }}
             onMouseOver={(e) => {
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = 'var(--shadow-accent), 0 25px 50px -12px rgba(59, 130, 246, 0.35)';
+              e.currentTarget.style.background = 'var(--accent-light)';
+              e.currentTarget.style.transform = 'translateY(-1px)';
+              e.currentTarget.style.boxShadow = '0 10px 28px rgba(45,126,255,0.3)';
             }}
             onMouseOut={(e) => {
-              e.currentTarget.style.transform = 'translateY(0px)';
-              e.currentTarget.style.boxShadow = 'var(--shadow-accent)';
+              e.currentTarget.style.background = 'var(--accent)';
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 6px 20px rgba(45,126,255,0.2)';
             }}
           >
-            Start Building Portfolio
+            Start Building Portfolio →
           </button>
         </div>
       </section>
-
       {/* Caution Banner */}
       <div style={{
         background: 'rgba(239, 68, 68, 0.05)',
@@ -1822,9 +1805,9 @@ if (showAboutPage) {
       {/* Stats Section */}
       <section style={{
         padding: '80px 24px',
-        background: '#000000',
-        borderTop: '1px solid var(--text-primary)',
-        borderBottom: '1px solid var(--text-primary)'
+        background: 'var(--bg2)',
+        borderTop: '1px solid rgba(255,255,255,0.08)',
+        borderBottom: '1px solid rgba(255,255,255,0.08)'
       }}>
         <div style={{
           maxWidth: '1200px',
@@ -1993,8 +1976,8 @@ if (showAboutPage) {
 
         <div style={{
           background: 'var(--surface)',
-          border: '1px solid var(--border)',
-          borderRadius: '20px',
+          border: '1px solid rgba(255,255,255,0.08)',
+          borderRadius: '12px',
           overflow: 'hidden',
           boxShadow: 'var(--shadow-xl)'
         }}>
@@ -2952,6 +2935,33 @@ if (showAboutPage) {
                         '📈 Benchmark Comparison'
                       }
                     </button>
+
+
+		{/* ADD THE MONTE CARLO BUTTON RIGHT HERE */}
+                    <button
+                      onClick={getMonteCarloAnalysis}
+                      disabled={monteCarloLoading}
+                      style={{
+                        padding: '18px 36px',
+                        background: monteCarloLoading ? 'var(--text-muted)' : 'var(--gradient-warm)',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '10px',
+                        cursor: monteCarloLoading ? 'not-allowed' : 'pointer',
+                        fontWeight: '600',
+                        fontSize: '17px',
+                        transition: 'all 0.25s ease',
+                        letterSpacing: '-0.2px',
+                        marginBottom: '16px',
+                        marginRight: '16px'
+                      }}
+                    >
+			{monteCarloLoading ? 
+                        '🎲 Running 10,000 Simulations...' : 
+                        '📊 Monte Carlo Analysis'
+                      }
+                    </button>
+
                   </>
                 )}
               </div>
@@ -3067,6 +3077,117 @@ if (showAboutPage) {
                   </div>
                 </div>
               )}
+
+	{/* Monte Carlo Results Display */}
+              {monteCarloResults && (
+                <div style={{
+                  marginTop: '32px',
+                  padding: '32px',
+                  background: 'var(--surface-elevated)',
+                  borderRadius: '12px',
+                  border: '1px solid var(--border)'
+                }}>
+                  <h4 style={{
+                    fontSize: '20px',
+                    fontWeight: '600',
+                    marginBottom: '16px',
+                    color: 'var(--text-primary)'
+                  }}>
+                    🎲 Monte Carlo Simulation Results (10,000 Runs)
+                  </h4>
+                  <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                    gap: '24px',
+                    marginBottom: '32px'
+                  }}>
+                    <div style={{ textAlign: 'center' }}>
+                      <div style={{
+                        fontSize: '32px',
+                        fontWeight: '700',
+                        background: 'var(--gradient-success)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent'
+                      }}>
+                        ${monteCarloResults.projected_values?.mean?.toLocaleString()}
+                      </div>
+                      <div style={{
+                        color: 'var(--text-secondary)',
+                        fontSize: '14px'
+                      }}>
+                        Expected Value ({selectedTimeframe}Y)
+                      </div>
+                    </div>
+                    <div style={{ textAlign: 'center' }}>
+                      <div style={{
+                        fontSize: '32px',
+                        fontWeight: '700',
+                        color: monteCarloResults.risk_metrics?.probability_of_loss_pct < 10 ? 'var(--success)' : 'var(--warning)'
+                      }}>
+                        {monteCarloResults.risk_metrics?.probability_of_loss_pct}%
+                      </div>
+                      <div style={{
+                        color: 'var(--text-secondary)',
+                        fontSize: '14px'
+                      }}>
+                        Probability of Loss
+                      </div>
+                    </div>
+                    <div style={{ textAlign: 'center' }}>
+                      <div style={{
+                        fontSize: '32px',
+                        fontWeight: '700',
+                        background: 'var(--gradient-warm)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent'
+                      }}>
+                        ${monteCarloResults.risk_metrics?.value_at_risk_95?.toLocaleString()}
+                      </div>
+                      <div style={{
+                        color: 'var(--text-secondary)',
+                        fontSize: '14px'
+                      }}>
+                        95% VaR (Worst Case)
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div style={{
+                    padding: '24px',
+                    background: 'var(--surface)',
+                    border: '1px solid var(--border)',
+                    borderRadius: '8px',
+                    marginBottom: '16px'
+                  }}>
+                    <h5 style={{
+                      fontSize: '16px',
+                      fontWeight: '600',
+                      marginBottom: '12px',
+                      color: 'var(--text-primary)'
+                    }}>
+                      📊 Risk Analysis Summary:
+                    </h5>
+                    <div style={{
+                      color: 'var(--text-secondary)',
+                      fontSize: '14px',
+                      lineHeight: '1.5'
+                    }}>
+                      After 10,000 simulations, your portfolio shows an {monteCarloResults.risk_metrics?.probability_of_loss_pct}% chance of loss with an average maximum drawdown of {Math.abs(monteCarloResults.risk_metrics?.avg_max_drawdown_pct)}%. 
+                      The 95% Value at Risk indicates that in the worst 5% of scenarios, your portfolio value could drop to ${monteCarloResults.risk_metrics?.value_at_risk_95?.toLocaleString()}.
+                    </div>
+                  </div>
+
+                  <div style={{
+                    fontSize: '0.8rem',
+                    color: 'var(--text-muted)',
+                    textAlign: 'center',
+                    fontStyle: 'italic'
+                  }}>
+                    Monte Carlo simulation based on {monteCarloResults.analysis_metadata?.data_period} using multivariate normal distribution
+                  </div>
+                </div>
+              )}
+	 
 
               {/* Enhanced 7-Benchmark Comparison Section */}
               {benchmarkData && (
@@ -3513,11 +3634,11 @@ if (showAboutPage) {
 
   {/* Footer */}
 <footer style={{
-  background: '#f8fafc',
-  borderTop: '1px solid #0f172a',
+  background: 'var(--bg2)',
+  borderTop: '1px solid rgba(255,255,255,0.08)',
   padding: '40px 32px',
   textAlign: 'center',
-  color: '#475569',
+  color: 'var(--text-muted)',
   fontSize: '14px'
 }}>
   <div style={{
@@ -3549,7 +3670,7 @@ if (showAboutPage) {
   </div>
   <div style={{
     fontSize: '14px',
-    color: '#64748b'
+    color: 'var(--text-muted)'
   }}>
     Quantitative Finance & Financial Economics | Self-Directed Learning Initiative
   </div>

@@ -2282,7 +2282,13 @@ if (showAboutPage) {
         marginTop: '60px',
         position: 'relative',
       }}>
-
+        {/* Subtle grid background */}
+        <div style={{
+          position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none',
+          backgroundImage: 'linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)',
+          backgroundSize: '64px 64px',
+          maskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%)',
+        }} />
         {/* Glow */}
         <div style={{
           position: 'absolute', top: '0', left: '-5%',

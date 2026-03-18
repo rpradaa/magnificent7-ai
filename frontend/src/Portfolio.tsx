@@ -148,112 +148,1430 @@ const StepSection: React.FC<StepSectionProps> = ({
 const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfolio }) => (
   <div style={{
     fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
-    lineHeight: '1.6', color: '#F4F7FF', background: '#080E1A',
-    minHeight: '100vh', WebkitFontSmoothing: 'antialiased',
+    lineHeight: '1.6',
+    color: '#0f172a',
+    background: '#ffffff',
+    minHeight: '100vh'
   }}>
-    <style>{`
-      @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500&display=swap');
-      .alink{color:#5A9FFF;text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
-      .alink:hover{border-bottom-color:#5A9FFF}
-    `}</style>
-
+    {/* Header */}
     <header style={{
-      position:'fixed',top:0,left:0,right:0,zIndex:1000,height:'58px',
-      background:'rgba(8,14,26,0.92)',backdropFilter:'blur(20px)',
-      borderBottom:'1px solid rgba(255,255,255,0.08)',display:'flex',alignItems:'center',
+      borderBottom: '1px solid #0f172a',
+      background: 'rgba(255, 255, 255, 0.98)',
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      zIndex: 1000,
+      backdropFilter: 'blur(12px)',
+      boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
     }}>
-      <div style={{width:'100%',maxWidth:'1200px',margin:'0 auto',padding:'0 32px',display:'flex',alignItems:'center',justifyContent:'space-between'}}>
-        <div style={{display:'flex',alignItems:'center',gap:'12px'}}>
-          <span style={{fontSize:'15px',fontWeight:'600',color:'#F4F7FF'}}>AlphaKnaut</span>
-          <div style={{width:'1px',height:'14px',background:'rgba(255,255,255,0.14)'}}/>
-          <span style={{fontFamily:"'IBM Plex Mono',monospace",fontSize:'9px',letterSpacing:'0.12em',color:'#3A4558',textTransform:'uppercase' as 'uppercase'}}>About</span>
+      <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto',
+        padding: '0 32px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        height: '88px'
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <div style={{
+            width: '48px',
+            height: '48px',
+            position: 'relative',
+            filter: 'drop-shadow(0 0 15px rgba(7, 12, 22, 0.3))'
+          }}>
+            {/* Quantum Logo Animation */}
+            <div style={{
+              position: 'absolute',
+              width: '100%',
+              height: '100%',
+              background: 'radial-gradient(circle, rgba(7, 12, 22, 0.15) 0%, rgba(71, 85, 105, 0.1) 40%, rgba(100, 116, 139, 0.05) 70%, transparent 100%)',
+              borderRadius: '50%',
+              animation: 'quantumPulse 4s ease-in-out infinite',
+              filter: 'blur(0.5px)'
+            }} />
+            <style>
+              {`
+                @keyframes quantumPulse {
+                  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.6; }
+                  50% { transform: scale(1.1) rotate(180deg); opacity: 0.9; }
+                }
+                @keyframes quantumFloat {
+                  0%, 100% { transform: translateY(0px) scale(1) rotate(0deg); opacity: 0.9; }
+                  33% { transform: translateY(-6px) scale(1.3) rotate(120deg); opacity: 1; }
+                  66% { transform: translateY(-3px) scale(0.9) rotate(240deg); opacity: 0.95; }
+                }
+              `}
+            </style>
+            {/* Quantum States */}
+            {[
+              { top: '15%', left: '25%', delay: '0s', size: '3px', color: '#070c16' },
+              { top: '35%', left: '75%', delay: '1s', size: '4px', color: '#475569' },
+              { top: '65%', left: '15%', delay: '2s', size: '2px', color: '#0c1426' },
+              { top: '85%', left: '65%', delay: '3s', size: '5px', color: '#64748b' },
+              { top: '25%', left: '85%', delay: '4s', size: '3px', color: '#1e3a8a' },
+              { top: '75%', left: '45%', delay: '5s', size: '3px', color: '#374151' },
+              { top: '50%', left: '50%', delay: '0s', size: '6px', color: '#ffffff', border: '1px solid rgba(148, 163, 184, 0.4)' }
+            ].map((state, index) => (
+              <div key={index} style={{
+                position: 'absolute',
+                top: state.top,
+                left: state.left,
+                width: state.size,
+                height: state.size,
+                background: state.color === '#ffffff' ? 'radial-gradient(circle, #ffffff 0%, #070c16 100%)' : state.color,
+                borderRadius: '50%',
+                animation: `quantumFloat 5s ease-in-out infinite`,
+                animationDelay: state.delay,
+                filter: 'brightness(1.2) saturate(1.1)',
+                boxShadow: `0 0 8px ${state.color}`,
+                border: state.border || 'none'
+              }} />
+            ))}
+          </div>
+          <div style={{
+            fontSize: '24px',
+            fontWeight: '700',
+            color: 'var(--text-primary)',
+            letterSpacing: '-0.5px'
+          }}>
+            AlphaKnaut V2
+          </div>
         </div>
-        <div style={{display:'flex',alignItems:'center',gap:'12px'}}>
-          <button onClick={onBackToPortfolio} style={{fontFamily:"'Inter',sans-serif",fontSize:'12px',color:'#6B7A94',background:'transparent',border:'none',cursor:'pointer',padding:'6px 12px',borderRadius:'4px'}}
-            onMouseOver={(e)=>{e.currentTarget.style.color='#B8C4D8'}}
-            onMouseOut={(e)=>{e.currentTarget.style.color='#6B7A94'}}>
+        <nav style={{
+          display: 'flex',
+          gap: '32px',
+          alignItems: 'center'
+        }}>
+          <button
+            onClick={onBackToPortfolio}
+            style={{
+              color: '#475569',
+              textDecoration: 'none',
+              fontWeight: '500',
+              fontSize: '15px',
+              transition: 'all 0.2s ease',
+              cursor: 'pointer',
+              padding: '8px 16px',
+              borderRadius: '6px',
+              background: 'transparent',
+              border: 'none'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.color = '#3b82f6';
+              e.currentTarget.style.background = 'rgba(59, 130, 246, 0.05)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.color = '#475569';
+              e.currentTarget.style.background = 'transparent';
+            }}
+          >
             Portfolio
           </button>
-          <span style={{fontFamily:"'Inter',sans-serif",fontSize:'12px',fontWeight:'500',color:'#5A9FFF',padding:'6px 14px',borderRadius:'4px',background:'rgba(45,126,255,0.08)',border:'1px solid rgba(45,126,255,0.2)'}}>About</span>
-        </div>
+          <span style={{
+            color: '#3b82f6',
+            fontWeight: '600',
+            fontSize: '15px',
+            padding: '8px 16px',
+            borderRadius: '6px',
+            background: 'rgba(59, 130, 246, 0.1)'
+          }}>
+            About
+          </span>
+        </nav>
       </div>
     </header>
 
-    <div style={{paddingTop:'58px',borderBottom:'1px solid rgba(255,255,255,0.08)'}}>
-      <div style={{maxWidth:'900px',margin:'0 auto',padding:'4rem 2rem 3rem'}}>
-        <div style={{display:'flex',alignItems:'center',gap:'10px',fontFamily:"'IBM Plex Mono',monospace",fontSize:'10px',letterSpacing:'0.16em',textTransform:'uppercase' as 'uppercase',color:'#5A9FFF',marginBottom:'1.5rem'}}>
-          <div style={{width:'20px',height:'1px',background:'#2D7EFF'}}/>
-          The Origin Story
+    {/* Main Content */}
+    <main style={{
+      marginTop: '88px',
+      maxWidth: '900px',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      padding: '3rem 2rem'
+    }}>
+      <h1 style={{
+        fontSize: '3rem',
+        fontWeight: '800',
+        lineHeight: '1.1',
+        color: '#0f172a',
+        marginBottom: '0.5rem',
+        letterSpacing: '-1px',
+        background: 'linear-gradient(135deg, #0f172a 0%, #3b82f6 70%, #8b5cf6 100%)',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent'
+      }}>
+        AlphaKnaut V2: Building Institutional-Grade AI for Portfolio Strategy
+      </h1>
+      <p style={{
+        fontSize: '1.25rem',
+        color: '#64748b',
+        fontStyle: 'italic',
+        marginBottom: '3rem',
+        fontWeight: '500'
+      }}>
+        A Self-Directed Project at the Intersection of Finance, Economics & AI
+      </p>
+
+      <div style={{ marginBottom: '3rem' }}>
+        <h2 style={{
+          fontSize: '1.75rem',
+          fontWeight: '700',
+          color: '#0f172a',
+          marginBottom: '1rem',
+          letterSpacing: '-0.3px'
+        }}>
+          The Challenge
+        </h2>
+        <div style={{
+          color: '#475569',
+          fontSize: '1rem',
+          lineHeight: '1.7'
+        }}>
+         <p style={{ marginBottom: '1rem' }}>
+  In Summer 2025, I (<a 
+    href="https://www.linkedin.com/in/riya-pradhan/" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    style={{
+      color: '#1e3a8a',
+      textDecoration: 'none',
+      fontWeight: '600',
+      borderBottom: '1px solid transparent',
+      transition: 'all 0.2s ease'
+    }}
+    onMouseOver={(e) => {
+      e.currentTarget.style.borderBottom = '1px solid #1e3a8a';
+      e.currentTarget.style.color = '#1e40af';
+    }}
+    onMouseOut={(e) => {
+      e.currentTarget.style.borderBottom = '1px solid transparent';
+      e.currentTarget.style.color = '#1e3a8a';
+    }}
+  >
+    Riya Pradhan
+  </a>) set out to find internships combining <strong style={{ color: '#0f172a', fontWeight: '600' }}>financial economics and AI</strong>—the intersection where I plan to build my career. But such opportunities didn't exist. So I built one myself.
+</p>
+          <p style={{ marginBottom: '1rem' }}>
+            Could I create an AI-powered investment platform with no prior programming experience in six weeks?
+          </p>
+          <p style={{ marginBottom: '1rem' }}>
+            <strong style={{ color: '#0f172a', fontWeight: '600' }}>The result:</strong> AlphaKnaut—a full-stack platform that integrates real-time financial data, economic modeling, and AI reasoning for portfolio optimization.
+          </p>
         </div>
-        <h1 style={{fontFamily:"'Libre Baskerville',Georgia,serif",fontSize:'clamp(2.2rem,4vw,3.4rem)',fontWeight:'400',lineHeight:'1.15',color:'#F4F7FF',marginBottom:'1rem',letterSpacing:'-0.01em'}}>
-          Building <em style={{fontStyle:'italic',color:'#B8C4D8'}}>institutional-grade</em><br/>AI for portfolio strategy
-        </h1>
-        <p style={{fontSize:'16px',fontWeight:'300',color:'#6B7A94',lineHeight:'1.8',maxWidth:'560px'}}>
-          A self-directed project at the intersection of Finance, Economics & AI — built in six weeks from zero programming experience.
-        </p>
       </div>
-    </div>
 
-    <main style={{maxWidth:'900px',margin:'0 auto',padding:'3rem 2rem'}}>
-      {[
-        {
-          label:'The Challenge', h:'Why AlphaKnaut exists',
-          body: <><p style={{color:'#6B7A94',fontSize:'15px',lineHeight:'1.85',marginBottom:'1rem',fontWeight:'300'}}>In Summer 2025, I (<a href="https://www.linkedin.com/in/riya-pradhan/" target="_blank" rel="noopener noreferrer" className="alink">Riya Pradhan</a>) set out to find internships combining <strong style={{color:'#B8C4D8',fontWeight:'500'}}>financial economics and AI</strong> — the intersection where I plan to build my career. Such opportunities did not exist. So I built one myself.</p><p style={{color:'#6B7A94',fontSize:'15px',lineHeight:'1.85',marginBottom:'1rem',fontWeight:'300'}}>Could I create an AI-powered investment platform with no prior programming experience in six weeks? <strong style={{color:'#B8C4D8',fontWeight:'500'}}>The result:</strong> AlphaKnaut — a full-stack platform integrating real-time financial data, macroeconomic indicators, and AI reasoning for portfolio optimization.</p></>
-        },
-        {
-          label:'The Platform', h:'What AlphaKnaut is',
-          body: <><p style={{color:'#6B7A94',fontSize:'15px',lineHeight:'1.85',marginBottom:'1rem',fontWeight:'300'}}>AlphaKnaut is an AI-powered portfolio optimization platform centered on the Magnificent 7 technology stocks ($17.4 trillion market cap, 34% of S&P 500 weight). The platform combines real-time financial data, macroeconomic indicators, news sentiment, and AI-powered reasoning to generate forward-looking portfolio insights.</p><p style={{color:'#6B7A94',fontSize:'15px',lineHeight:'1.85',marginBottom:'1rem',fontWeight:'300'}}>The system simulates institutional-grade financial analysis through responsive data visualizations, economic forecasting, and natural language processing that adjusts to user preferences and market conditions.</p></>
-        },
-        {
-          label:'Key Learnings', h:'AI reliability challenges',
-          body: <><p style={{color:'#6B7A94',fontSize:'15px',lineHeight:'1.85',marginBottom:'1rem',fontWeight:'300'}}><strong style={{color:'#B8C4D8',fontWeight:'500'}}>The Hallucination Problem:</strong> As an LLM-powered system, Claude can generate convincing but inaccurate information. Since these models are non-deterministic by nature, the same input can produce different outputs, making reliability challenges complex.</p><p style={{color:'#6B7A94',fontSize:'15px',lineHeight:'1.85',marginBottom:'1rem',fontWeight:'300'}}><strong style={{color:'#B8C4D8',fontWeight:'500'}}>Key Learning:</strong> The challenge is not perfecting AI output — it is building robust systems that assume AI will make mistakes. Each validation layer taught me more about practical AI deployment than theoretical coursework ever could.</p></>
-        },
-        {
-          label:'Technical Architecture', h:'How it is built',
-          body: <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(200px,1fr))',gap:'10px'}}>
-            {[
-              {t:'Frontend',d:'React.js + TypeScript with 15+ interconnected state variables and Recharts integration'},
-              {t:'Backend',d:'Python Flask API with 12 RESTful endpoints and robust error handling'},
-              {t:'AI Engine',d:'Anthropic Claude with custom prompt engineering and structured JSON outputs'},
-              {t:'Data Pipeline',d:'Yahoo Finance, Federal Reserve FRED, NewsAPI, and Finnhub APIs'},
-            ].map((item,i)=>(
-              <div key={i} style={{background:'#0F1828',border:'1px solid rgba(255,255,255,0.08)',borderRadius:'8px',padding:'1.2rem'}}>
-                <div style={{fontFamily:"'IBM Plex Mono',monospace",fontSize:'10px',color:'#5A9FFF',letterSpacing:'0.1em',marginBottom:'8px',textTransform:'uppercase' as 'uppercase'}}>{item.t}</div>
-                <p style={{fontSize:'13px',color:'#6B7A94',lineHeight:'1.6',margin:0,fontWeight:'300'}}>{item.d}</p>
-              </div>
-            ))}
-          </div>
-        },
-        {
-          label:'Why It Matters', h:'The bigger picture',
-          body: <><p style={{color:'#6B7A94',fontSize:'15px',lineHeight:'1.85',marginBottom:'1rem',fontWeight:'300'}}>Building AlphaKnaut deepened my understanding of where my passion lies — at the intersection of AI, finance, and economic reasoning. The technical challenges taught me invaluable lessons: translating economic theory into AI prompts, converting market sentiment into quantifiable risk metrics, and building systems that think like institutional analysts.</p><p style={{color:'#6B7A94',fontSize:'15px',lineHeight:'1.85',fontWeight:'300'}}>This is precisely where I want to focus my career — constantly adapting my skills as these fields evolve together.</p></>
-        },
-      ].map((sec,i)=>(
-        <div key={i} style={{borderBottom:'1px solid rgba(255,255,255,0.08)',marginBottom:'2.5rem',paddingBottom:'2.5rem'}}>
-          <div style={{display:'flex',alignItems:'center',gap:'10px',fontFamily:"'IBM Plex Mono',monospace",fontSize:'10px',letterSpacing:'0.18em',textTransform:'uppercase' as 'uppercase',color:'#5A9FFF',marginBottom:'1rem'}}>
-            <span style={{width:'20px',height:'1px',background:'#2D7EFF',display:'inline-block'}}/>
-            {sec.label}
-          </div>
-          <h2 style={{fontFamily:"'Libre Baskerville',Georgia,serif",fontSize:'1.7rem',fontWeight:'400',color:'#F4F7FF',marginBottom:'1rem',lineHeight:'1.2'}}>{sec.h}</h2>
-          {sec.body}
+      <div style={{ marginBottom: '3rem' }}>
+        <h2 style={{
+          fontSize: '1.75rem',
+          fontWeight: '700',
+          color: '#0f172a',
+          marginBottom: '1rem',
+          letterSpacing: '-0.3px'
+        }}>
+          What AlphaKnaut Is
+        </h2>
+        <div style={{
+          color: '#475569',
+          fontSize: '1rem',
+          lineHeight: '1.7'
+        }}>
+          <p style={{ marginBottom: '1rem' }}>
+            AlphaKnaut is an AI-powered portfolio optimization platform centered on the Magnificent 7 technology stocks ($17.4 trillion market cap, 34% of S&P 500 weight). The platform combines real-time financial data, macroeconomic indicators, news sentiment, and AI-powered reasoning to generate forward-looking portfolio insights.
+          </p>
+          <p style={{ marginBottom: '1rem' }}>
+            The system simulates institutional-grade financial analysis through responsive data visualizations, economic forecasting, and natural language processing that adjusts to user preferences and market conditions.
+          </p>
         </div>
-      ))}
+      </div>
 
-      <div style={{background:'#0F1828',border:'1px solid rgba(255,255,255,0.08)',borderLeft:'2px solid #2D7EFF',borderRadius:'0 8px 8px 0',padding:'2rem'}}>
-        <div style={{fontSize:'16px',fontWeight:'500',color:'#F4F7FF',marginBottom:'4px'}}>Riya Pradhan</div>
-        <div style={{fontFamily:"'IBM Plex Mono',monospace",fontSize:'10px',color:'#3A4558',letterSpacing:'0.08em',marginBottom:'1rem'}}>University of Toronto · Incoming Georgetown MSBA 27</div>
-        <p style={{color:'#6B7A94',fontSize:'14px',lineHeight:'1.8',marginBottom:'1rem',fontWeight:'300'}}>I would love to connect and chat about this project or anything related to finance and AI!</p>
-        <a href="https://www.linkedin.com/in/riya-pradhan" target="_blank" rel="noopener noreferrer" style={{color:'#5A9FFF',textDecoration:'none',fontSize:'13px'}}>Connect on LinkedIn →</a>
+<div style={{ marginBottom: '3rem' }}>
+        <h2 style={{
+          fontSize: '1.75rem',
+          fontWeight: '700',
+          color: '#0f172a',
+          marginBottom: '1rem',
+          letterSpacing: '-0.3px'
+        }}>
+          Why "AlphaKnaut"?
+        </h2>
+        <div style={{
+          color: '#475569',
+          fontSize: '1rem',
+          lineHeight: '1.7'
+        }}>
+          <p style={{ marginBottom: '1rem' }}>
+            <strong style={{ color: '#0f172a', fontWeight: '600' }}>"Alpha"</strong> represents excess returns above market benchmarks—the ultimate goal of sophisticated investing. In institutional finance, consistently generating alpha requires advanced quantitative analysis, precision risk management, and superior market intelligence.
+          </p>
+          <p style={{ marginBottom: '1rem' }}>
+            <strong style={{ color: '#0f172a', fontWeight: '600' }}>"Knaut"</strong> (navigator/explorer) embodies the systematic journey toward discovering optimal portfolio allocations. Just as astronauts navigate uncharted space using cutting-edge technology, AlphaKnaut navigates the complex intersection of AI and financial markets to guide investors toward alpha-generating portfolios.
+          </p>
+          <p style={{ marginBottom: '1rem' }}>
+            <strong style={{ color: '#0f172a', fontWeight: '600' }}>AlphaKnaut's Mission:</strong> To be the intelligent navigator that helps investors reach optimal portfolio construction, systematically beating market benchmarks through AI-powered analysis and institutional-grade methodology.
+          </p>
+          <p style={{ marginBottom: '1rem' }}>
+            <strong style={{ color: '#0f172a', fontWeight: '600' }}>Important Distinction:</strong> AlphaKnaut is entirely separate from Alphanaut.io (the cryptocurrency trading platform). While they focus on crypto trading automation, AlphaKnaut specializes exclusively in AI-driven equity portfolio optimization and fundamental analysis of technology sector leaders.
+          </p>
+        </div>
+      </div>
+
+	
+	{/* ADD THIS NEW SECTION HERE */}
+      <div style={{ marginBottom: '3rem' }}>
+        <h2 style={{
+          fontSize: '1.75rem',
+          fontWeight: '700',
+          color: '#0f172a',
+          marginBottom: '1rem',
+          letterSpacing: '-0.3px'
+        }}>
+          AI Reliability Challenges
+        </h2>
+        <div style={{
+          color: '#475569',
+          fontSize: '1rem',
+          lineHeight: '1.7'
+        }}>
+          <p style={{ marginBottom: '1rem' }}>
+            <strong style={{ color: '#0f172a', fontWeight: '600' }}>The Hallucination Problem:</strong> As an LLM-powered system, Claude can generate convincing but inaccurate information—from unrealistic inflation rates (320%+) to political timeline confusion (mixing Biden/Trump references). Since these models are non-deterministic and stochastic by nature, the same input can produce different outputs, making reliability challenges even more complex.
+          </p>
+          <p style={{ marginBottom: '1rem' }}>
+            <strong style={{ color: '#0f172a', fontWeight: '600' }}>Solutions Implemented:</strong> I developed validation layers including economic data sanity checks, temporal consistency filters, and response verification algorithms. These significantly reduced hallucination frequency, but complete elimination proved impossible.
+          </p>
+          <p style={{ marginBottom: '1rem' }}>
+            <strong style={{ color: '#0f172a', fontWeight: '600' }}>Key Learning:</strong> The challenge isn't perfecting AI output, but building robust systems that assume AI will make mistakes. Each validation layer taught me more about practical AI deployment than theoretical coursework ever could.
+          </p>
+          <p style={{ marginBottom: '1rem' }}>
+            <strong style={{ color: '#0f172a', fontWeight: '600' }}>Looking Forward:</strong> The remaining edge cases are fascinating—they reveal how LLMs process and sometimes misconnect information. This real-world debugging experience highlighted the critical gap between AI research and production deployment.
+          </p>
+        </div>
+      </div>
+
+{/* V2 as completely separate "NEW" section */}
+<div style={{
+  background: 'linear-gradient(135deg, #64748b 0%, #94a3b8 100%)',
+  padding: '3rem 2rem',
+  borderRadius: '16px',
+  margin: '3rem 0',
+  position: 'relative',
+  boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.2)'
+}}>
+  {/* "NEW" badge */}
+  <div style={{
+    position: 'absolute',
+    top: '1rem',
+    right: '1rem',
+    background: '#10b981',
+    color: '#ffffff',
+    padding: '8px 16px',
+    borderRadius: '20px',
+    fontSize: '12px',
+    fontWeight: '700',
+    letterSpacing: '1px'
+  }}>
+    NEW - SEPTEMBER 2025
+  </div>
+  <h2 style={{
+    fontSize: '1.75rem',
+    fontWeight: '700',
+    color: '#0f172a',
+    marginBottom: '1rem',
+    letterSpacing: '-0.3px'
+  }}>
+    AlphaKnaut V2: Advanced Risk Analytics Engine
+  </h2>
+  
+  <div style={{
+    color: '#0f172a',
+    fontSize: '1rem',
+    lineHeight: '1.7'
+  }}>
+    <p style={{ marginBottom: '1rem' }}>
+      <strong style={{ color: '#0f172a', fontWeight: '600' }}>The Next Evolution:</strong> Following the initial platform completion in Summer 2025, I spent September 2025 addressing this gap. Traditional portfolio tools provide basic risk scores, but institutional investors demand precise probability distributions and tail risk analysis. This drove the development of V2's comprehensive Monte Carlo simulation engine.
+    </p>
+    
+    <p style={{ marginBottom: '1rem' }}>
+      <strong style={{ color: '#0f172a', fontWeight: '600' }}>Institutional-Grade Risk Modeling:</strong> V2 introduces quantitative risk analytics that mirror those used by hedge funds and institutional asset managers. The Monte Carlo engine runs 10,000 probabilistic simulations, each representing a possible future market scenario based on 7 years of historical return patterns. This captures critical market events that shape risk profiles: the 2018 volatility spike, 2020's unprecedented crash and recovery, and the 2022-2023 interest rate regime shift.
+    </p>
+    
+    <p style={{ marginBottom: '1rem' }}>
+      <strong style={{ color: '#0f172a', fontWeight: '600' }}>Beyond Basic Risk Assessment:</strong> The system calculates Value-at-Risk (VaR) at both 95% and 99% confidence levels—the industry standard for regulatory capital requirements and internal risk limits. But V2 goes further, implementing Expected Shortfall analysis that quantifies average losses when VaR thresholds are breached. This addresses VaR's critical limitation: it reveals the probability of extreme losses but not their magnitude.
+    </p>
+    
+    <p style={{ marginBottom: '1rem' }}>
+      <strong style={{ color: '#0f172a', fontWeight: '600' }}>The Data Science Challenge:</strong> Implementing robust Monte Carlo simulation required solving several technical problems. The engine must dynamically calculate correlation matrices between assets, model multivariate return distributions, and simulate thousands of daily price paths while maintaining computational efficiency. The transition from 2-year to 7-year historical datasets proved crucial—initial results showed unrealistically optimistic risk estimates (7.8% probability of loss) that ignored major market disruptions.
+    </p>
+    
+   <p style={{ marginBottom: '1rem' }}>
+  <strong style={{ color: '#0f172a', fontWeight: '600' }}>Real Risk, Real Numbers:</strong> V2's enhanced modeling reveals more realistic risk profiles. Portfolio probability of loss estimates increased to the 15-25% range, and maximum drawdown projections expanded from 30% to 40-50%—figures that align with actual technology portfolio performance during market stress. This demonstrates how sample size and historical coverage directly impact quantitative model reliability. V2 transforms AlphaKnaut from a portfolio construction tool into a comprehensive risk management platform. Users can now quantify the statistical likelihood of various outcomes, understand correlation breakdowns during stress periods, and make informed decisions about position sizing and portfolio concentration. This bridges the gap between academic portfolio theory and practical risk management—the intersection where institutional finance operates.
+</p>
+
+<p style={{ marginBottom: '0' }}>
+  The development of V2's risk engine reinforced my conviction that the future lies in systems that don't just optimize for returns, but quantify and communicate the uncertainties inherent in those projections. This is the foundation of institutional decision-making.
+</p>
+  </div>
+</div>
+
+      <div style={{ marginBottom: '3rem' }}>
+        <h2 style={{
+          fontSize: '1.75rem',
+          fontWeight: '700',
+          color: '#0f172a',
+          marginBottom: '1rem',
+          letterSpacing: '-0.3px'
+        }}>
+          Technical Architecture
+        </h2>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gap: '1rem',
+          margin: '1.5rem 0'
+        }}>
+          {[
+            {
+              title: 'Frontend: React.js + TypeScript',
+              desc: 'Custom component architecture with 15+ interconnected state variables, Recharts integration, mobile-first responsive design'
+            },
+            {
+              title: 'Backend: Python Flask API',
+              desc: '12 RESTful endpoints, multi-threaded architecture, robust error handling with fallback mechanisms'
+            },
+            {
+              title: 'AI Integration: Anthropic Claude',
+              desc: 'Custom prompt engineering, structured JSON outputs, adaptive prompts based on market conditions'
+            },
+            {
+              title: 'Data Pipeline',
+              desc: '4 external APIs: Yahoo Finance, Federal Reserve FRED, NewsAPI, Finnhub for comprehensive market intelligence'
+            }
+          ].map((item, index) => (
+            <div key={index} style={{
+              background: '#ffffff',
+              border: '1px solid #e2e8f0',
+              borderRadius: '8px',
+              padding: '1rem',
+              transition: 'all 0.2s ease'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.2)';
+              e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(59, 130, 246, 0.1), 0 4px 6px -2px rgba(59, 130, 246, 0.05)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.borderColor = '#e2e8f0';
+              e.currentTarget.style.boxShadow = 'none';
+            }}
+            >
+              <h4 style={{
+                color: '#3b82f6',
+                fontSize: '0.9rem',
+                fontWeight: '600',
+                marginBottom: '0.5rem'
+              }}>
+                {item.title}
+              </h4>
+              <p style={{
+                color: '#64748b',
+                fontSize: '0.85rem',
+                margin: 0
+              }}>
+                {item.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <table style={{
+          width: '100%',
+          borderCollapse: 'collapse',
+          margin: '1.5rem 0',
+          background: '#ffffff',
+          borderRadius: '8px',
+          overflow: 'hidden',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+        }}>
+          <thead>
+            <tr>
+              <th style={{
+                background: '#f1f5f9',
+                color: '#374151',
+                fontWeight: '600',
+                padding: '0.75rem',
+                textAlign: 'left',
+                fontSize: '0.9rem'
+              }}>Source</th>
+              <th style={{
+                background: '#f1f5f9',
+                color: '#374151',
+                fontWeight: '600',
+                padding: '0.75rem',
+                textAlign: 'left',
+                fontSize: '0.9rem'
+              }}>Purpose</th>
+              <th style={{
+                background: '#f1f5f9',
+                color: '#374151',
+                fontWeight: '600',
+                padding: '0.75rem',
+                textAlign: 'left',
+                fontSize: '0.9rem'
+              }}>Integration</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ['Yahoo Finance', 'Stock prices & changes', 'Real-time price feeds → Portfolio calculations'],
+              ['Federal Reserve FRED', 'Economic indicators', 'Macro data → AI context building'],
+              ['NewsAPI', 'Market headlines', 'Event filtering → Investment implications'],
+              ['Finnhub', 'Company sentiment', 'News analysis → Risk assessment']
+            ].map((row, index) => (
+              <tr key={index}>
+                {row.map((cell, cellIndex) => (
+                  <td key={cellIndex} style={{
+                    padding: '0.75rem',
+                    borderTop: '1px solid #e5e7eb',
+                    color: '#4b5563',
+                    fontSize: '0.9rem'
+                  }}>
+                    {cell}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div style={{ marginBottom: '3rem' }}>
+        <h2 style={{
+          fontSize: '1.75rem',
+          fontWeight: '700',
+          color: '#0f172a',
+          marginBottom: '1rem',
+          letterSpacing: '-0.3px'
+        }}>
+          The Development Process: 6 Weeks
+        </h2>
+        <div style={{
+          borderLeft: '2px solid #e2e8f0',
+          paddingLeft: '1.5rem',
+          margin: '1.5rem 0'
+        }}>
+          {[
+            {
+              title: 'Weeks 1-2: Foundation',
+              content: 'Learned TypeScript, React, and Python simultaneously. Mastered state management and API integration. Built development environment and Git workflow.'
+            },
+            {
+              title: 'Week 3: Data Integration',
+              content: 'Created pipelines for 4 external APIs with asynchronous processing. Implemented error handling for rate limits and service failures.'
+            },
+            {
+              title: 'Week 4: AI Implementation',
+              content: 'Engineered prompts for market-aware financial analysis. Built unified AI engine for portfolio and benchmark analysis.'
+            },
+            {
+              title: 'Weeks 5-6: Features & Polish',
+              content: 'Implemented 3 allocation strategies with risk monitoring. Created weight normalization algorithms. Designed professional UI through multiple iterations.'
+            }
+          ].map((item, index) => (
+            <div key={index} style={{
+              marginBottom: '1.5rem',
+              position: 'relative'
+            }}>
+              <div style={{
+                content: '',
+                position: 'absolute',
+                left: '-1.65rem',
+                top: '0.25rem',
+                width: '10px',
+                height: '10px',
+                background: '#3b82f6',
+                borderRadius: '50%'
+              }}></div>
+              <div style={{
+                fontWeight: '600',
+                color: '#0f172a',
+                marginBottom: '0.25rem'
+              }}>
+                {item.title}
+              </div>
+              <div style={{
+                color: '#64748b',
+                fontSize: '0.9rem'
+              }}>
+                {item.content}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ marginBottom: '3rem' }}>
+        <h2 style={{
+          fontSize: '1.75rem',
+          fontWeight: '700',
+          color: '#0f172a',
+          marginBottom: '1rem',
+          letterSpacing: '-0.3px'
+        }}>
+          Key Technical Innovations
+        </h2>
+        {[
+          {
+            title: 'Unified AI Methodology',
+            content: 'Most platforms use different calculation methods for portfolio analysis versus benchmark comparisons. AlphaKnaut uses a single AI reasoning engine for both, ensuring consistent logic and comparable results across all analysis.'
+          },
+          {
+            title: 'Smart Weight Normalization',
+            content: 'Built custom algorithm that maintains user preferences while auto-adjusting remaining positions to ensure 100% allocation:'
+          },
+          {
+            title: 'Real-Time Market Intelligence',
+            content: 'Processes 50+ news headlines per analysis cycle. Claude AI filters for market-relevant events. Integrates findings into specific portfolio predictions with quantified impacts.'
+          }
+        ].map((item, index) => (
+          <div key={index} style={{
+            background: '#f8fafc',
+            border: '1px solid #e2e8f0',
+            borderRadius: '12px',
+            padding: '1.5rem',
+            margin: '1.5rem 0',
+            boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)'
+          }}>
+            <h3 style={{
+              color: '#3b82f6',
+              marginBottom: '1rem'
+            }}>
+              {item.title}
+            </h3>
+            <p>{item.content}</p>
+            {index === 1 && (
+              <div style={{
+                background: '#1e293b',
+                color: '#e2e8f0',
+                padding: '1rem',
+                borderRadius: '8px',
+                fontFamily: "'Monaco', 'Menlo', monospace",
+                fontSize: '0.85rem',
+                overflow: 'auto',
+                margin: '1rem 0'
+              }}>
+{`const updateCustomWeight = (stock: string, newWeight: number) => {
+    // Preserve user-set allocations
+    // Auto-adjust non-fixed positions proportionally
+    // Maintain mathematical consistency
+}`}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div style={{ marginBottom: '3rem' }}>
+        <h2 style={{
+          fontSize: '1.75rem',
+          fontWeight: '700',
+          color: '#0f172a',
+          marginBottom: '1rem',
+          letterSpacing: '-0.3px'
+        }}>
+          Three Strategic Frameworks
+        </h2>
+        {[
+          {
+            title: '🔵 Strategy 1: Equal Weight Distribution',
+            content: 'Systematic diversification with automatic rebalancing across selected assets for maximum diversification benefit.'
+          },
+          {
+            title: '🟡 Strategy 2: Custom Allocation + AI Risk Monitoring',
+            content: 'Manual slider controls with AI-powered concentration risk detection. System triggers warnings at >25% allocations and suggests alternatives including ETFs and rebalancing strategies.'
+          },
+          {
+            title: '🔴 Strategy 3: AI Portfolio Manager',
+            content: 'Claude acts as institutional portfolio manager, analyzing fundamentals, market conditions, and risk factors to recommend optimal allocations or alternative investments entirely.'
+          }
+        ].map((item, index) => (
+          <div key={index} style={{
+            background: 'linear-gradient(135deg, #f8fafc 0%, #ffffff 100%)',
+            border: '1px solid #e2e8f0',
+            borderRadius: '12px',
+            padding: '1.5rem',
+            margin: '1rem 0',
+            transition: 'all 0.2s ease'
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.2)';
+            e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(59, 130, 246, 0.1), 0 4px 6px -2px rgba(59, 130, 246, 0.05)';
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.borderColor = '#e2e8f0';
+            e.currentTarget.style.boxShadow = 'none';
+          }}
+          >
+            <div style={{
+              color: '#0f172a',
+              fontWeight: '600',
+              marginBottom: '0.75rem',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem'
+            }}>
+              {item.title}
+            </div>
+            <p>{item.content}</p>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ marginBottom: '3rem' }}>
+        <h2 style={{
+          fontSize: '1.75rem',
+          fontWeight: '700',
+          color: '#0f172a',
+          marginBottom: '1rem',
+          letterSpacing: '-0.3px'
+        }}>
+          Why This Matters
+        </h2>
+        <div style={{
+          color: '#475569',
+          fontSize: '1rem',
+          lineHeight: '1.7'
+        }}>
+          <p style={{ marginBottom: '1rem' }}>
+            Building AlphaKnaut deepened my understanding of where my true passion lies—at the intersection of AI, finance, and economic reasoning. This project crystallized my career direction and showed me that the most compelling problems exist where disciplines converge.
+          </p>
+          <p style={{ marginBottom: '1rem' }}>
+            The technical challenges taught me invaluable lessons: translating economic theory into AI prompts, converting market sentiment into quantifiable risk metrics, and building systems that think like institutional analysts. This is precisely where I want to focus my career—constantly adapting my skills as these fields evolve together.
+          </p>
+          <p style={{ marginBottom: '1rem' }}>
+  <strong style={{ color: '#0f172a', fontWeight: '600' }}>Next steps:</strong> My next project will be a profitable venture, applying these same principles of financial AI to real market opportunities.
+</p>
+<p style={{ marginBottom: '1rem' }}>
+  I'd love to connect and chat about this project or anything related to finance and AI! Feel free to reach out on LinkedIn.
+</p>
+        </div>
+      </div>
+
+      <div style={{ marginBottom: '3rem' }}>
+        <h2 style={{
+          fontSize: '1.75rem',
+          fontWeight: '700',
+          color: '#0f172a',
+          marginBottom: '1rem',
+          letterSpacing: '-0.3px'
+        }}>
+          What This Demonstrates
+        </h2>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gap: '1rem',
+          margin: '1.5rem 0'
+        }}>
+          {[
+            {
+              title: 'Technical Implementation',
+              desc: 'Full-stack development from zero programming knowledge to functional platform with complex AI integration'
+            },
+            {
+              title: 'Financial Technology Innovation',
+              desc: 'Portfolio theory application with modern risk management constraints and institutional methodology'
+            },
+            {
+              title: 'Problem-Solving Approach',
+              desc: 'Self-directed learning across multiple technical domains with innovation under time constraints'
+            },
+            {
+              title: 'Applied Knowledge',
+              desc: 'Bridging theoretical understanding with hands-on application of economics and finance principles'
+            }
+          ].map((item, index) => (
+            <div key={index} style={{
+              background: '#ffffff',
+              border: '1px solid #e2e8f0',
+              borderRadius: '8px',
+              padding: '1rem'
+            }}>
+              <h4 style={{
+                color: '#3b82f6',
+                fontSize: '0.9rem',
+                fontWeight: '600',
+                marginBottom: '0.5rem'
+              }}>
+                {item.title}
+              </h4>
+              <p style={{
+                color: '#64748b',
+                fontSize: '0.85rem',
+                margin: 0
+              }}>
+                {item.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div style={{
+        textAlign: 'center',
+        background: '#f8fafc',
+        border: '1px solid #e2e8f0',
+        borderRadius: '12px',
+        padding: '1.5rem',
+        margin: '1.5rem 0'
+      }}>
+        <h3 style={{ marginBottom: '1rem' }}>Technical Specifications</h3>
+        <p><strong>Frontend:</strong> React.js, TypeScript, Recharts | <strong>Backend:</strong> Python Flask with RESTful API design</p>
+        <p><strong>AI:</strong> Anthropic Claude with custom prompt engineering | <strong>Data:</strong> Yahoo Finance, Federal Reserve FRED, NewsAPI, Finnhub</p>
+        <p><strong>Timeline:</strong> 6 weeks of focused development</p>
+      </div>
+
+      {/* Contact Section */}
+      <div style={{
+        background: '#0f172a',
+        color: 'white',
+        padding: '2rem',
+        borderRadius: '12px',
+        textAlign: 'center',
+        marginTop: '3rem'
+      }}>
+        <div style={{
+          fontSize: '1.25rem',
+          fontWeight: '700',
+          marginBottom: '0.5rem'
+        }}>
+          Riya Pradhan
+        </div>
+        <div style={{
+          color: '#94a3b8',
+          marginBottom: '1rem'
+        }}>
+          University of Toronto | Financial Economics & FinTech
+        </div>
+        <a 
+          href="https://www.linkedin.com/in/riya-pradhan" 
+          style={{
+            color: '#60a5fa',
+            textDecoration: 'none'
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.color = '#93c5fd';
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.color = '#60a5fa';
+          }}
+        >
+          LinkedIn: linkedin.com/in/riya-pradhan
+        </a>
       </div>
     </main>
-
-    <footer style={{borderTop:'1px solid rgba(255,255,255,0.08)',padding:'20px 2rem',display:'flex',alignItems:'center',justifyContent:'space-between',background:'#0B1220',marginTop:'3rem'}}>
-      <span style={{fontFamily:"'IBM Plex Mono',monospace",fontSize:'11px',color:'#3A4558'}}>AlphaKnaut · Macro Intelligence</span>
-      <span style={{fontFamily:"'IBM Plex Mono',monospace",fontSize:'11px',color:'#3A4558'}}>Built by Riya Pradhan</span>
-    </footer>
   </div>
 );
 
+
+// ── LANDING PAGE COMPONENT (v3) ──────────────────────────────────────────────
+const landingStyles = `
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500&display=swap');
+
+  .ak-root {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #080E1A;
+    color: #F4F7FF;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  .ak-root *, .ak-root *::before, .ak-root *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  .ak-root ::-webkit-scrollbar { width: 3px; }
+  .ak-root ::-webkit-scrollbar-track { background: #080E1A; }
+  .ak-root ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.14); border-radius: 2px; }
+
+  /* TICKER */
+  .ak-ticker {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    height: 26px; background: #0B1220;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex; align-items: center; overflow: hidden;
+  }
+  .ak-ticker-label {
+    flex-shrink: 0; padding: 0 14px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px; letter-spacing: 0.14em;
+    color: #5A9FFF; text-transform: uppercase;
+    border-right: 1px solid rgba(255,255,255,0.10);
+    height: 100%; display: flex; align-items: center;
+    background: #0B1220; z-index: 2;
+  }
+  .ak-ticker-track {
+    display: flex; align-items: center;
+    white-space: nowrap;
+    animation: akTickerScroll 40s linear infinite;
+  }
+  .ak-ticker-item {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9.5px; padding: 0 20px;
+    display: flex; align-items: center; gap: 8px;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    color: #6B7A94;
+  }
+  .ak-ticker-sym { color: #B8C4D8; font-weight: 500; letter-spacing: 0.05em; }
+  .ak-ticker-up { color: #22C55E; }
+  .ak-ticker-dn { color: #EF4444; }
+  @keyframes akTickerScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+  @keyframes akPulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
+  @keyframes akBlink { 0%,100%{opacity:1} 50%{opacity:0} }
+  @keyframes akFadein { from{opacity:0} to{opacity:1} }
+
+  /* NAV */
+  .ak-nav {
+    position: fixed; top: 26px; left: 0; right: 0; z-index: 100;
+    height: 58px; display: flex; align-items: center; justify-content: space-between;
+    padding: 0 4rem;
+    background: rgba(8,14,26,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+  }
+  .ak-nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: pointer; }
+  .ak-nav-wordmark { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; letter-spacing: 0.01em; color: #F4F7FF; }
+  .ak-nav-divider { width: 1px; height: 14px; background: rgba(255,255,255,0.16); }
+  .ak-nav-sub { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.12em; color: #3A4558; text-transform: uppercase; }
+  .ak-nav-links { display: flex; gap: 2rem; }
+  .ak-nav-links a { font-size: 13px; font-weight: 400; color: #6B7A94; text-decoration: none; letter-spacing: 0.01em; transition: color 0.15s; }
+  .ak-nav-links a:hover { color: #F4F7FF; }
+  .ak-nav-right { display: flex; align-items: center; gap: 16px; }
+  .ak-nav-indicator {
+    display: flex; align-items: center; gap: 6px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.1em;
+    color: #22C55E; text-transform: uppercase;
+  }
+  .ak-nav-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: #22C55E; animation: akPulse 2.5s infinite;
+  }
+  .ak-nav-btn {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.03em;
+    padding: 7px 18px; background: #2D7EFF; color: #F4F7FF;
+    border-radius: 4px; border: none; cursor: pointer;
+    transition: background 0.15s, transform 0.15s;
+    font-family: 'Inter', sans-serif;
+  }
+  .ak-nav-btn:hover { background: #5A9FFF; transform: translateY(-1px); }
+
+  /* HERO */
+  .ak-hero {
+    min-height: 100vh; padding-top: 84px;
+    display: grid; grid-template-columns: 1.05fr 0.95fr;
+    position: relative; overflow: hidden;
+    background: #080E1A;
+  }
+  .ak-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 72px 72px; pointer-events: none;
+    -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  }
+  .ak-hero-glow {
+    position: absolute; top: 20%; left: 0%;
+    width: 55vw; height: 55vw;
+    background: radial-gradient(circle, rgba(45,126,255,0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .ak-hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 5rem 3.5rem 5rem 4rem;
+    position: relative; z-index: 1;
+  }
+  .ak-hero-eyebrow {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+    letter-spacing: 0.16em; text-transform: uppercase; color: #5A9FFF;
+    margin-bottom: 2rem;
+  }
+  .ak-eyebrow-line { width: 28px; height: 1px; background: #2D7EFF; }
+  .ak-hero h1 {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: clamp(2.6rem, 4vw, 4.4rem); font-weight: 400;
+    line-height: 1.1; letter-spacing: -0.01em; color: #F4F7FF;
+    margin-bottom: 1.8rem;
+  }
+  .ak-hero h1 em { font-style: italic; color: #B8C4D8; }
+  .ak-hero-desc {
+    font-size: 15px; font-weight: 300; color: #6B7A94;
+    line-height: 1.8; max-width: 420px; margin-bottom: 2.8rem; letter-spacing: 0.01em;
+  }
+  .ak-hero-actions { display: flex; align-items: center; gap: 14px; margin-bottom: 3.5rem; }
+  .ak-btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.02em;
+    padding: 11px 24px; background: #2D7EFF; color: #F4F7FF;
+    border-radius: 4px; border: none; cursor: pointer;
+    transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+    font-family: 'Inter', sans-serif; text-decoration: none;
+  }
+  .ak-btn-primary:hover { background: #5A9FFF; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(45,126,255,0.25); }
+  .ak-btn-ghost {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 400; color: #6B7A94;
+    background: none; border: none; cursor: pointer;
+    transition: color 0.15s; letter-spacing: 0.01em;
+    font-family: 'Inter', sans-serif; text-decoration: none;
+  }
+  .ak-btn-ghost:hover { color: #B8C4D8; }
+  .ak-hero-stats { display: flex; gap: 0; border-top: 1px solid rgba(255,255,255,0.10); padding-top: 2rem; }
+  .ak-hero-stat { padding-right: 2rem; margin-right: 2rem; border-right: 1px solid rgba(255,255,255,0.10); }
+  .ak-hero-stat:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+  .ak-stat-val { font-family: 'IBM Plex Mono', monospace; font-size: 18px; font-weight: 500; color: #F4F7FF; display: block; letter-spacing: 0.02em; }
+  .ak-stat-lbl { font-size: 11px; color: #3A4558; display: block; margin-top: 2px; letter-spacing: 0.02em; }
+
+  /* HERO RIGHT DASHBOARD */
+  .ak-hero-right {
+    display: flex; align-items: center; justify-content: center;
+    padding: 2.5rem 3.5rem 2.5rem 1.5rem;
+    border-left: 1px solid rgba(255,255,255,0.10);
+    position: relative; z-index: 1;
+  }
+  .ak-dashboard { width: 100%; max-width: 420px; background: #0F1828; border: 1px solid rgba(255,255,255,0.10); border-radius: 8px; overflow: hidden; }
+  .ak-dash-topbar { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); background: #131E2E; }
+  .ak-dash-topbar-left { display: flex; align-items: center; gap: 8px; }
+  .ak-dot { width: 7px; height: 7px; border-radius: 50%; }
+  .ak-dot-r { background: #FF5F57; }
+  .ak-dot-y { background: #FEBC2E; }
+  .ak-dot-g { background: #28C840; }
+  .ak-dash-title { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.08em; color: #3A4558; margin-left: 4px; }
+  .ak-dash-live { display: flex; align-items: center; gap: 5px; font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.1em; color: #22C55E; }
+  .ak-dash-live-dot { width: 5px; height: 5px; border-radius: 50%; background: #22C55E; animation: akPulse 2.5s infinite; }
+  .ak-dash-signal { padding: 16px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .ak-signal-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: #5A9FFF; margin-bottom: 8px; }
+  .ak-signal-headline { font-size: 13px; font-weight: 500; color: #F4F7FF; line-height: 1.5; margin-bottom: 6px; }
+  .ak-signal-body { font-size: 12px; color: #6B7A94; line-height: 1.6; font-weight: 300; }
+  .ak-dash-alloc { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .ak-alloc-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .ak-alloc-title { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: #3A4558; }
+  .ak-alloc-updated { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #3A4558; }
+  .ak-alloc-row { display: grid; grid-template-columns: 40px 1fr 38px 46px; align-items: center; gap: 10px; margin-bottom: 9px; }
+  .ak-alloc-row:last-child { margin-bottom: 0; }
+  .ak-alloc-sym { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: #B8C4D8; }
+  .ak-alloc-bar-bg { height: 3px; background: rgba(255,255,255,0.10); border-radius: 2px; overflow: hidden; }
+  .ak-alloc-bar-fill { height: 100%; background: #2D7EFF; border-radius: 2px; }
+  .ak-alloc-bar-dim { background: #3A4558; }
+  .ak-alloc-pct { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6B7A94; text-align: right; }
+  .ak-alloc-delta { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-align: right; }
+  .ak-delta-up { color: #22C55E; }
+  .ak-delta-dn { color: #EF4444; }
+  .ak-dash-reason { padding: 14px 16px; animation: akFadein 0.5s 1.2s ease both; }
+  .ak-reason-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: #5A9FFF; margin-bottom: 8px; }
+  .ak-reason-text { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6B7A94; line-height: 1.75; }
+  .ak-reason-hi { color: #B8C4D8; }
+  .ak-reason-g { color: #22C55E; }
+  .ak-reason-r { color: #EF4444; }
+
+  /* RULE */
+  .ak-rule { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid rgba(255,255,255,0.10); border-bottom: 1px solid rgba(255,255,255,0.10); background: #0B1220; }
+  .ak-rule-cell { padding: 22px 32px; border-right: 1px solid rgba(255,255,255,0.10); }
+  .ak-rule-cell:last-child { border-right: none; }
+  .ak-rule-val { font-family: 'IBM Plex Mono', monospace; font-size: 17px; font-weight: 500; color: #F4F7FF; display: block; margin-bottom: 3px; }
+  .ak-rule-lbl { font-size: 11px; color: #3A4558; letter-spacing: 0.01em; }
+
+  /* SECTIONS */
+  .ak-section { padding: 6rem 4rem; border-bottom: 1px solid rgba(255,255,255,0.10); }
+  .ak-sec-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #5A9FFF; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 10px; }
+  .ak-sec-label::before { content: ''; width: 20px; height: 1px; background: #2D7EFF; }
+  .ak-sec-h2 { font-family: 'Libre Baskerville', Georgia, serif; font-size: clamp(1.9rem, 3vw, 2.9rem); font-weight: 400; line-height: 1.15; color: #F4F7FF; margin-bottom: 1.2rem; }
+  .ak-sec-h2 em { font-style: italic; color: #B8C4D8; }
+  .ak-sec-p { font-size: 15px; font-weight: 300; color: #6B7A94; line-height: 1.8; max-width: 480px; letter-spacing: 0.01em; }
+
+  /* HOW */
+  .ak-how { display: grid; grid-template-columns: 1fr 1.6fr; gap: 6rem; align-items: start; }
+  .ak-how-step { display: grid; grid-template-columns: 28px 1fr; gap: 20px; padding: 28px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .ak-how-step:first-child { padding-top: 0; }
+  .ak-how-step:last-child { border-bottom: none; padding-bottom: 0; }
+  .ak-step-n { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #5A9FFF; letter-spacing: 0.08em; padding-top: 2px; }
+  .ak-step-title { font-size: 14px; font-weight: 600; color: #F4F7FF; margin-bottom: 6px; letter-spacing: 0.01em; }
+  .ak-step-desc { font-size: 13.5px; font-weight: 300; color: #6B7A94; line-height: 1.75; }
+
+  /* FEATURES */
+  .ak-features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.10); border-radius: 6px; overflow: hidden; margin-top: 3.5rem; }
+  .ak-feat { background: #0F1828; padding: 28px; transition: background 0.2s; }
+  .ak-feat:hover { background: #131E2E; }
+  .ak-feat-n { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.12em; color: #3A4558; margin-bottom: 14px; }
+  .ak-feat-title { font-size: 14px; font-weight: 600; color: #F4F7FF; margin-bottom: 8px; letter-spacing: 0.01em; }
+  .ak-feat-desc { font-size: 13px; font-weight: 300; color: #6B7A94; line-height: 1.75; }
+
+  /* TERMINAL */
+  .ak-terminal-section { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+  .ak-term-shell { background: #0F1828; border: 1px solid rgba(255,255,255,0.10); border-radius: 6px; overflow: hidden; font-family: 'IBM Plex Mono', monospace; }
+  .ak-term-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: #131E2E; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .ak-term-name { font-size: 10px; color: #3A4558; margin-left: 6px; letter-spacing: 0.06em; }
+  .ak-term-body { padding: 18px 20px; font-size: 11.5px; line-height: 2; color: #6B7A94; }
+  .ak-t-prompt { color: #5A9FFF; }
+  .ak-t-cmd { color: #F4F7FF; }
+  .ak-t-comment { color: #3A4558; }
+  .ak-t-g { color: #22C55E; }
+  .ak-t-r { color: #EF4444; }
+  .ak-t-b { color: #5A9FFF; }
+  .ak-t-cursor { display: inline-block; width: 7px; height: 13px; background: #2D7EFF; animation: akBlink 1.1s steps(1) infinite; vertical-align: middle; margin-left: 2px; }
+
+  /* FOUNDER */
+  .ak-founder { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+  .ak-founder-quote { border-left: 2px solid #2D7EFF; padding-left: 2.5rem; }
+  .ak-blockquote { font-family: 'Libre Baskerville', Georgia, serif; font-size: clamp(1.2rem, 2vw, 1.65rem); font-weight: 400; font-style: italic; line-height: 1.5; color: #F4F7FF; margin-bottom: 1.5rem; }
+  .ak-attr { display: flex; align-items: center; gap: 12px; }
+  .ak-attr-avatar { width: 36px; height: 36px; border-radius: 50%; background: rgba(45,126,255,0.10); border: 1px solid #2D7EFF; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: #5A9FFF; font-family: 'Inter', sans-serif; }
+  .ak-attr-name { font-size: 13px; font-weight: 600; color: #F4F7FF; display: block; }
+  .ak-attr-role { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #3A4558; letter-spacing: 0.05em; display: block; margin-top: 1px; }
+  .ak-founder-right p { font-size: 14.5px; font-weight: 300; color: #6B7A94; line-height: 1.85; margin-bottom: 1.1rem; }
+  .ak-founder-right p strong { color: #B8C4D8; font-weight: 500; }
+  .ak-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 1.8rem; }
+  .ak-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.06em; padding: 5px 11px; border: 1px solid rgba(255,255,255,0.10); border-radius: 3px; color: #3A4558; }
+
+  /* STACK */
+  .ak-stack-section { text-align: center; }
+  .ak-stack-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 2.5rem; }
+  .ak-stack-item { display: flex; align-items: center; gap: 7px; padding: 9px 16px; background: #0F1828; border: 1px solid rgba(255,255,255,0.10); border-radius: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #6B7A94; letter-spacing: 0.03em; transition: border-color 0.15s, color 0.15s; }
+  .ak-stack-item:hover { border-color: rgba(255,255,255,0.16); color: #B8C4D8; }
+  .ak-stack-dot { width: 5px; height: 5px; border-radius: 50%; background: #2D7EFF; }
+
+  /* CTA */
+  .ak-cta { text-align: center; padding: 8rem 4rem; position: relative; overflow: hidden; background: #080E1A; }
+  .ak-cta::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 500px; height: 400px; background: radial-gradient(ellipse, rgba(45,126,255,0.06) 0%, transparent 70%); pointer-events: none; }
+  .ak-cta h2 { font-family: 'Libre Baskerville', Georgia, serif; font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 400; line-height: 1.2; color: #F4F7FF; margin-bottom: 1rem; position: relative; z-index: 1; }
+  .ak-cta h2 em { font-style: italic; color: #B8C4D8; }
+  .ak-cta p { font-size: 15px; font-weight: 300; color: #6B7A94; margin-bottom: 2.5rem; position: relative; z-index: 1; }
+  .ak-cta-row { display: flex; justify-content: center; gap: 12px; position: relative; z-index: 1; }
+
+  /* FOOTER */
+  .ak-footer { border-top: 1px solid rgba(255,255,255,0.10); padding: 22px 4rem; display: flex; align-items: center; justify-content: space-between; background: #0B1220; }
+  .ak-footer-mark { font-size: 13px; font-weight: 500; color: #6B7A94; letter-spacing: 0.01em; }
+  .ak-footer-links { display: flex; gap: 20px; }
+  .ak-footer-links a { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #3A4558; text-decoration: none; transition: color 0.15s; }
+  .ak-footer-links a:hover { color: #6B7A94; }
+  .ak-footer-copy { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.06em; color: #3A4558; }
+
+  @media (max-width: 1024px) {
+    .ak-hero { grid-template-columns: 1fr; }
+    .ak-hero-right { border-left: none; border-top: 1px solid rgba(255,255,255,0.10); justify-content: flex-start; padding: 2rem 2.5rem; }
+    .ak-how, .ak-terminal-section, .ak-founder { grid-template-columns: 1fr; gap: 3rem; }
+    .ak-features-grid { grid-template-columns: 1fr 1fr; }
+    .ak-nav { padding: 0 2rem; }
+    .ak-nav-links { display: none; }
+    .ak-section { padding: 4rem 2.5rem; }
+    .ak-footer { flex-wrap: wrap; gap: 14px; padding: 18px 2.5rem; }
+    .ak-rule-cell { padding: 18px 20px; }
+  }
+  @media (max-width: 640px) {
+    .ak-hero-left { padding: 3rem 1.5rem; }
+    .ak-hero-right { padding: 1.5rem; }
+    .ak-features-grid { grid-template-columns: 1fr; }
+    .ak-rule { grid-template-columns: repeat(2, 1fr); }
+    .ak-section { padding: 3rem 1.5rem; }
+    .ak-footer { flex-direction: column; gap: 12px; padding: 16px 1.5rem; }
+  }
+`;
+
+const TICKERS = [
+  {sym:'NVDA',price:'875.40',chg:'+2.41%',up:true},
+  {sym:'MSFT',price:'422.18',chg:'+1.85%',up:true},
+  {sym:'AAPL',price:'189.30',chg:'-1.08%',up:false},
+  {sym:'GOOG',price:'175.62',chg:'+0.93%',up:true},
+  {sym:'META',price:'528.90',chg:'+3.12%',up:true},
+  {sym:'AMZN',price:'202.14',chg:'+1.67%',up:true},
+  {sym:'TSLA',price:'248.76',chg:'-2.34%',up:false},
+  {sym:'SPY', price:'524.80',chg:'+0.48%',up:true},
+  {sym:'QQQ', price:'446.22',chg:'+0.72%',up:true},
+  {sym:'TLT', price:'93.44', chg:'-0.31%',up:false},
+  {sym:'GLD', price:'218.50',chg:'+0.55%',up:true},
+  {sym:'DXY', price:'104.20',chg:'+0.18%',up:true},
+];
+
+const LandingPage: React.FC<{ onLaunch: () => void }> = ({ onLaunch }) => {
+  const allTickers = [...TICKERS, ...TICKERS];
+
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  return (
+    <div className="ak-root">
+      <style>{landingStyles}</style>
+
+      {/* TICKER */}
+      <div className="ak-ticker">
+        <div className="ak-ticker-label">Live</div>
+        <div className="ak-ticker-track">
+          {allTickers.map((t, i) => (
+            <div key={i} className="ak-ticker-item">
+              <span className="ak-ticker-sym">{t.sym}</span>
+              <span>{t.price}</span>
+              <span className={t.up ? 'ak-ticker-up' : 'ak-ticker-dn'}>{t.chg}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* NAV */}
+      <nav className="ak-nav">
+        <div className="ak-nav-logo" onClick={() => window.scrollTo({top:0,behavior:'smooth'})}>
+          <span className="ak-nav-wordmark">AlphaKnaut</span>
+          <div className="ak-nav-divider" />
+          <span className="ak-nav-sub">Macro Intelligence</span>
+        </div>
+        <div className="ak-nav-links">
+          <a href="#ak-how" onClick={(e)=>{e.preventDefault();scrollTo('ak-how')}}>Methodology</a>
+          <a href="#ak-features" onClick={(e)=>{e.preventDefault();scrollTo('ak-features')}}>Platform</a>
+          <a href="#ak-terminal" onClick={(e)=>{e.preventDefault();scrollTo('ak-terminal')}}>Terminal</a>
+          <a href="#ak-founder" onClick={(e)=>{e.preventDefault();scrollTo('ak-founder')}}>About</a>
+        </div>
+        <div className="ak-nav-right">
+          <div className="ak-nav-indicator">
+            <div className="ak-nav-dot" />
+            Systems Online
+          </div>
+          <button className="ak-nav-btn" onClick={onLaunch}>Launch →</button>
+        </div>
+      </nav>
+
+      {/* HERO */}
+      <div className="ak-hero">
+        <div className="ak-hero-glow" />
+        <div className="ak-hero-left">
+          <div className="ak-hero-eyebrow">
+            <div className="ak-eyebrow-line" />
+            AI-Powered Macro Intelligence
+          </div>
+          <h1>
+            When macro moves,<br/>
+            <em>intelligence</em> must<br/>
+            move with it.
+          </h1>
+          <p className="ak-hero-desc">
+            AlphaKnaut monitors Federal Reserve policy signals in real time, runs contextual AI reasoning against Magnificent 7 holdings, and surfaces portfolio intelligence — with every decision fully explained.
+          </p>
+          <div className="ak-hero-actions">
+            <button className="ak-btn-primary" onClick={onLaunch}>
+              Launch Platform
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1 6.5h11M7 1l5.5 5.5L7 12" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </button>
+            <button className="ak-btn-ghost" onClick={() => scrollTo('ak-how')}>See how it works →</button>
+          </div>
+          <div className="ak-hero-stats">
+            <div className="ak-hero-stat"><span className="ak-stat-val">Real-time</span><span className="ak-stat-lbl">News pipeline</span></div>
+            <div className="ak-hero-stat"><span className="ak-stat-val">Claude AI</span><span className="ak-stat-lbl">Reasoning engine</span></div>
+            <div className="ak-hero-stat"><span className="ak-stat-val">6 weeks</span><span className="ak-stat-lbl">Built from zero</span></div>
+          </div>
+        </div>
+
+        <div className="ak-hero-right">
+          <div className="ak-dashboard">
+            <div className="ak-dash-topbar">
+              <div className="ak-dash-topbar-left">
+                <div className="ak-dot ak-dot-r" /><div className="ak-dot ak-dot-y" /><div className="ak-dot ak-dot-g" />
+                <span className="ak-dash-title">alphaknaut — signal feed</span>
+              </div>
+              <div className="ak-dash-live"><div className="ak-dash-live-dot" />Live</div>
+            </div>
+            <div className="ak-dash-signal">
+              <div className="ak-signal-label">Macro Signal · FOMC</div>
+              <div className="ak-signal-headline">Powell signals higher-for-longer rate trajectory</div>
+              <div className="ak-signal-body">Rate cut expectations pushed to Q4 2025. Tech multiple compression risk elevated. Model recalculating exposure across Mag 7.</div>
+            </div>
+            <div className="ak-dash-alloc">
+              <div className="ak-alloc-header">
+                <span className="ak-alloc-title">AI Allocation · Mag 7</span>
+                <span className="ak-alloc-updated">Updated 09:47</span>
+              </div>
+              {[
+                {sym:'MSFT',w:'76%',pct:'19%',d:'+4%',up:true},
+                {sym:'NVDA',w:'60%',pct:'15%',d:'+2%',up:true},
+                {sym:'GOOG',w:'52%',pct:'13%',d:'+1%',up:true},
+                {sym:'AAPL',w:'40%',pct:'10%',d:'−3%',up:false,dim:true},
+              ].map(r => (
+                <div key={r.sym} className="ak-alloc-row">
+                  <span className="ak-alloc-sym">{r.sym}</span>
+                  <div className="ak-alloc-bar-bg"><div className={`ak-alloc-bar-fill${r.dim?' ak-alloc-bar-dim':''}`} style={{width:r.w}} /></div>
+                  <span className="ak-alloc-pct">{r.pct}</span>
+                  <span className={`ak-alloc-delta ${r.up?'ak-delta-up':'ak-delta-dn'}`}>{r.d}</span>
+                </div>
+              ))}
+            </div>
+            <div className="ak-dash-reason">
+              <div className="ak-reason-label">AI Reasoning</div>
+              <div className="ak-reason-text">
+                <span className="ak-reason-r">AAPL −3%</span> — China hardware exposure (~18%) directly tariff-exposed. Reducing weight.<br/>
+                <span className="ak-reason-g">MSFT +4%</span> — Azure cloud insulated from trade friction. Increasing allocation.<br/>
+                <span className="ak-reason-hi">Confidence: 84% · 12 signals processed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* RULE */}
+      <div className="ak-rule">
+        {[
+          {val:'Real-time',lbl:'News ingestion'},
+          {val:'Claude AI',lbl:'Reasoning engine'},
+          {val:'Mag 7',lbl:'Full coverage'},
+          {val:'6 weeks',lbl:'Built from zero'},
+          {val:'100%',lbl:'Decision transparency'},
+        ].map((r,i) => (
+          <div key={i} className="ak-rule-cell">
+            <span className="ak-rule-val">{r.val}</span>
+            <span className="ak-rule-lbl">{r.lbl}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* HOW */}
+      <section id="ak-how" className="ak-section">
+        <div className="ak-how">
+          <div>
+            <div className="ak-sec-label">Methodology</div>
+            <h2 className="ak-sec-h2">From <em>signal</em> to strategy</h2>
+            <p className="ak-sec-p">No hand-coded rules. No black boxes. Intelligence that reads, reasons, and adapts in real time.</p>
+          </div>
+          <div>
+            {[
+              {n:'01',title:'Live Signal Ingestion',desc:'AlphaKnaut monitors financial news in real time — FOMC statements, earnings, trade policy, geopolitical shifts. Each signal is parsed, categorized, and matched to affected holdings before analysis begins.'},
+              {n:'02',title:'Contextual AI Reasoning',desc:'Claude AI analyzes each signal against the current portfolio — calculating revenue exposure, supply chain risk, rate sensitivity, and sector correlation. The output is a structured thesis, not a sentiment score.'},
+              {n:'03',title:'Transparent Rebalancing',desc:'Every allocation change surfaces with full reasoning attached. You see the causal chain from macro event to portfolio impact to recommendation — explainable AI, built for accountability.'},
+            ].map(s => (
+              <div key={s.n} className="ak-how-step">
+                <span className="ak-step-n">{s.n}</span>
+                <div><div className="ak-step-title">{s.title}</div><p className="ak-step-desc">{s.desc}</p></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURES */}
+      <section id="ak-features" className="ak-section">
+        <div className="ak-sec-label">Platform</div>
+        <h2 className="ak-sec-h2">Built for <em>intelligence,</em><br/>not automation</h2>
+        <p className="ak-sec-p">AlphaKnaut doesn't run rules. It reasons through market events the way a seasoned macro analyst would.</p>
+        <div className="ak-features-grid">
+          {[
+            {n:'F — 01',title:'Real-time News Analysis',desc:'Powered by Claude, the platform reads breaking financial news and understands context — not keywords. When tariffs escalate, it knows which companies are directly exposed and why.'},
+            {n:'F — 02',title:'Readable Reasoning',desc:'Every allocation change includes a clear, structured explanation. You see the full causal chain from macro event to portfolio impact to recommended action.'},
+            {n:'F — 03',title:'Adaptive Intelligence',desc:'The system adjusts explanation depth to user sophistication. Analyst or beginner, AlphaKnaut calibrates without dumbing down the underlying analysis.'},
+            {n:'F — 04',title:'Mag 7 Deep Coverage',desc:'Apple, Microsoft, NVIDIA, Alphabet, Amazon, Meta, Tesla — each tracked with revenue geography models, supply chain topology, and rate sensitivity profiles.'},
+            {n:'F — 05',title:'Fed Policy Sensitivity',desc:'Specialized FOMC language interpretation — detecting hawkish/dovish shifts, forward guidance pivots, and dot-plot revisions with their implied effects on tech multiples.'},
+            {n:'F — 06',title:'Beyond Rule-based Finance',desc:'Traditional robo-advisors follow fixed decision trees. AlphaKnaut reasons. When geopolitics shifts in unexpected ways, it adapts — because it thinks contextually, not algorithmically.'},
+          ].map(f => (
+            <div key={f.n} className="ak-feat">
+              <div className="ak-feat-n">{f.n}</div>
+              <div className="ak-feat-title">{f.title}</div>
+              <p className="ak-feat-desc">{f.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* TERMINAL */}
+      <section id="ak-terminal" className="ak-section">
+        <div className="ak-terminal-section">
+          <div>
+            <div className="ak-sec-label">Under the Hood</div>
+            <h2 className="ak-sec-h2">The intelligence<br/><em>terminal</em></h2>
+            <p className="ak-sec-p" style={{marginBottom:'2rem'}}>Every analysis run is logged, structured, and inspectable. Full transparency from signal to recommendation.</p>
+            <button className="ak-btn-primary" onClick={onLaunch}>Open Platform →</button>
+          </div>
+          <div className="ak-term-shell">
+            <div className="ak-term-bar">
+              <div className="ak-dot ak-dot-r"/><div className="ak-dot ak-dot-y"/><div className="ak-dot ak-dot-g"/>
+              <span className="ak-term-name">alphaknaut · macro-engine v2.1</span>
+            </div>
+            <div className="ak-term-body">
+              <div><span className="ak-t-prompt">$</span> <span className="ak-t-cmd">alphaknaut analyze --trigger "FOMC" --portfolio mag7</span></div>
+              <div>&nbsp;</div>
+              <div><span className="ak-t-comment">→ Fetching transcript... 2,847 tokens</span></div>
+              <div><span className="ak-t-comment">→ Parsing forward guidance...</span></div>
+              <div><span className="ak-t-r">{'  '}⚠ Hawkish signal: "higher for longer" (91%)</span></div>
+              <div>&nbsp;</div>
+              <div><span className="ak-t-comment">→ Running exposure models...</span></div>
+              <div><span className="ak-t-r">{'  '}AAPL   China revenue: 18.2%   → HIGH</span></div>
+              <div><span className="ak-t-g">{'  '}MSFT   Cloud domestic: 73%    → INSULATED</span></div>
+              <div><span className="ak-t-b">{'  '}NVDA   Semi supply chain      → MODERATE</span></div>
+              <div>&nbsp;</div>
+              <div><span className="ak-t-comment">→ Generating recommendations...</span></div>
+              <div><span className="ak-t-g">{'  '}MSFT  +4.0%  (cloud beat + tariff insulation)</span></div>
+              <div><span className="ak-t-r">{'  '}AAPL  −3.0%  (China dependency + tariff risk)</span></div>
+              <div>&nbsp;</div>
+              <div><span className="ak-t-g">✓ Analysis complete. Reasoning exported.</span></div>
+              <div><span className="ak-t-prompt">$</span> <span className="ak-t-cursor"/></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FOUNDER */}
+      <section id="ak-founder" className="ak-section">
+        <div className="ak-founder">
+          <div className="ak-founder-quote">
+            <blockquote className="ak-blockquote">"We're witnessing two classes of students emerge — those who wait for access, and those who build the access themselves."</blockquote>
+            <div className="ak-attr">
+              <div className="ak-attr-avatar">RP</div>
+              <div>
+                <span className="ak-attr-name">Riya Pradhan</span>
+                <span className="ak-attr-role">Founder · University of Toronto · Georgetown MSBA '27</span>
+              </div>
+            </div>
+          </div>
+          <div className="ak-founder-right">
+            <div className="ak-sec-label">The Origin</div>
+            <p>AlphaKnaut was born from a rejected internship application and a refusal to accept "you're not technical enough" as a final answer. Built in six weeks with <strong>zero prior programming experience</strong>, it demonstrates that domain expertise combined with AI capability compounds into something more powerful than either alone.</p>
+            <p>The platform sits at the intersection of Economics, Public Policy, and Financial Technology — exactly the cross-disciplinary thinking that matters in an AI-transformed economy. It's not a prototype. It's a working system that ingests real news, runs real reasoning, and produces real investment analysis.</p>
+            <div className="ak-tags">
+              {['Economics · UofT','Python · React · Flask','Claude API','Macro Finance','Georgetown MSBA 27'].map(t => <div key={t} className="ak-tag">{t}</div>)}
+            </div>
+            <div style={{marginTop:'1.8rem'}}>
+              <a href="https://scaleupusa.substack.com/p/from-economics-student-to-ai-innovator" className="ak-btn-ghost" target="_blank" rel="noopener noreferrer">Read the full story →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* STACK */}
+      <section id="ak-stack" className="ak-section ak-stack-section">
+        <div className="ak-sec-label" style={{justifyContent:'center'}}>Technical Foundation</div>
+        <h2 className="ak-sec-h2" style={{fontSize:'1.8rem',textAlign:'center'}}>The stack</h2>
+        <div className="ak-stack-grid">
+          {['Claude AI (Anthropic)','Python · Flask','React · TypeScript','Financial News APIs','Real-time WebSockets','Dynamic Portfolio Engine','Vercel · Cloud Deploy'].map(s => (
+            <div key={s} className="ak-stack-item"><div className="ak-stack-dot"/>{s}</div>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <div className="ak-cta">
+        <h2>See <em>intelligent</em> macro analysis<br/>in action.</h2>
+        <p>Try AlphaKnaut — watch AI reason through real market events, live, with full transparency.</p>
+        <div className="ak-cta-row">
+          <button className="ak-btn-primary" onClick={onLaunch}>Launch AlphaKnaut →</button>
+          <a href="https://www.linkedin.com/in/riya-pradhan" className="ak-btn-ghost" target="_blank" rel="noopener noreferrer">Connect with Riya</a>
+        </div>
+      </div>
+
+      {/* FOOTER */}
+      <footer className="ak-footer">
+        <div className="ak-footer-mark">AlphaKnaut · Macro Intelligence</div>
+        <div className="ak-footer-links">
+          <a href="#" onClick={(e)=>{e.preventDefault();onLaunch()}}>Platform</a>
+          <a href="https://scaleupusa.substack.com/p/from-economics-student-to-ai-innovator" target="_blank" rel="noopener noreferrer">Story</a>
+          <a href="https://www.linkedin.com/in/riya-pradhan" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+        <div className="ak-footer-copy">Built by Riya Pradhan</div>
+      </footer>
+    </div>
+  );
+};
+// ── END LANDING PAGE ──────────────────────────────────────────────────────────
 
 const Portfolio: React.FC = () => {
   // All existing state variables - UNCHANGED

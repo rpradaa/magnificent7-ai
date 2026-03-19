@@ -150,7 +150,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
     fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
     lineHeight: '1.6',
     color: '#0f172a',
-    background: '#ffffff',
+    background: '#080E1A',
     minHeight: '100vh'
   }}>
     {/* Header */}
@@ -236,7 +236,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
             color: 'var(--text-primary)',
             letterSpacing: '-0.5px'
           }}>
-            AlphaKnaut V2
+            AlphaKnaut
           </div>
         </div>
         <nav style={{
@@ -302,7 +302,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
         WebkitBackgroundClip: 'text',
         WebkitTextFillColor: 'transparent'
       }}>
-        AlphaKnaut V2: Building Institutional-Grade AI for Portfolio Strategy
+        AlphaKnaut: Building Institutional-Grade AI for Portfolio Strategy
       </h1>
       <p style={{
         fontSize: '1.25rem',
@@ -479,7 +479,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
     marginBottom: '1rem',
     letterSpacing: '-0.3px'
   }}>
-    AlphaKnaut V2: Advanced Risk Analytics Engine
+    
   </h2>
   
   <div style={{
@@ -548,7 +548,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
             }
           ].map((item, index) => (
             <div key={index} style={{
-              background: '#ffffff',
+              background: '#080E1A',
               border: '1px solid #e2e8f0',
               borderRadius: '8px',
               padding: '1rem',
@@ -586,7 +586,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
           width: '100%',
           borderCollapse: 'collapse',
           margin: '1.5rem 0',
-          background: '#ffffff',
+          background: '#080E1A',
           borderRadius: '8px',
           overflow: 'hidden',
           boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
@@ -890,7 +890,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
             }
           ].map((item, index) => (
             <div key={index} style={{
-              background: '#ffffff',
+              background: '#080E1A',
               border: '1px solid #e2e8f0',
               borderRadius: '8px',
               padding: '1rem'

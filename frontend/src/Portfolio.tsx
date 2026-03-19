@@ -1528,7 +1528,7 @@ const LandingPage: React.FC<{ onLaunch: () => void }> = ({ onLaunch }) => {
             <p>AlphaKnaut was born from a rejected internship application and a refusal to accept "you're not technical enough" as a final answer. Built in six weeks with <strong>zero prior programming experience</strong>, it demonstrates that domain expertise combined with AI capability compounds into something more powerful than either alone.</p>
             <p>The platform sits at the intersection of Economics, Public Policy, and Financial Technology — exactly the cross-disciplinary thinking that matters in an AI-transformed economy. It's not a prototype. It's a working system that ingests real news, runs real reasoning, and produces real investment analysis.</p>
             <div className="ak-tags">
-              {['Economics · UofT','Python · React · Flask','Claude API','Macro Finance','Georgetown MSBA '27'].map(t => <div key={t} className="ak-tag">{t}</div>)}
+              {['Economics · UofT','Python · React · Flask','Claude API','Macro Finance','Georgetown MSBA 27'].map(t => <div key={t} className="ak-tag">{t}</div>)}
             </div>
             <div style={{marginTop:'1.8rem'}}>
               <a href="https://scaleupusa.substack.com/p/from-economics-student-to-ai-innovator" className="ak-btn-ghost" target="_blank" rel="noopener noreferrer">Read the full story →</a>

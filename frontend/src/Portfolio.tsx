@@ -85,7 +85,7 @@ const StepSection: React.FC<StepSectionProps> = ({
         </div>
       </div>
       <div style={{
-        color: '#64748b',
+        color: '#6B7A94',
         transition: 'transform 0.2s ease',
         transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)'
       }}>
@@ -128,7 +128,7 @@ const StepSection: React.FC<StepSectionProps> = ({
               🎯 Your Task:
             </h4>
             <p style={{
-              color: '#475569',
+              color: '#6B7A94',
               fontSize: '15px',
               lineHeight: '1.5',
               margin: 0
@@ -149,13 +149,13 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
   <div style={{
     fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
     lineHeight: '1.6',
-    color: '#0f172a',
-    background: '#ffffff',
+    color: '#F4F7FF',
+    background: '#080E1A',
     minHeight: '100vh'
   }}>
     {/* Header */}
     <header style={{
-      borderBottom: '1px solid #0f172a',
+      borderBottom: '1px solid rgba(255,255,255,0.08)',
       background: 'rgba(255, 255, 255, 0.98)',
       position: 'fixed',
       top: 0,
@@ -163,7 +163,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
       right: 0,
       zIndex: 1000,
       backdropFilter: 'blur(12px)',
-      boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
+      borderBottom: '1px solid rgba(255,255,255,0.08)'
     }}>
       <div style={{
         maxWidth: '1200px',
@@ -207,11 +207,11 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
             {/* Quantum States */}
             {[
               { top: '15%', left: '25%', delay: '0s', size: '3px', color: '#070c16' },
-              { top: '35%', left: '75%', delay: '1s', size: '4px', color: '#475569' },
+              { top: '35%', left: '75%', delay: '1s', size: '4px', color: '#6B7A94' },
               { top: '65%', left: '15%', delay: '2s', size: '2px', color: '#0c1426' },
-              { top: '85%', left: '65%', delay: '3s', size: '5px', color: '#64748b' },
+              { top: '85%', left: '65%', delay: '3s', size: '5px', color: '#6B7A94' },
               { top: '25%', left: '85%', delay: '4s', size: '3px', color: '#1e3a8a' },
-              { top: '75%', left: '45%', delay: '5s', size: '3px', color: '#374151' },
+              { top: '75%', left: '45%', delay: '5s', size: '3px', color: '#B8C4D8' },
               { top: '50%', left: '50%', delay: '0s', size: '6px', color: '#ffffff', border: '1px solid rgba(148, 163, 184, 0.4)' }
             ].map((state, index) => (
               <div key={index} style={{
@@ -236,7 +236,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
             color: 'var(--text-primary)',
             letterSpacing: '-0.5px'
           }}>
-            AlphaKnaut V2
+            AlphaKnaut
           </div>
         </div>
         <nav style={{
@@ -247,7 +247,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
           <button
             onClick={onBackToPortfolio}
             style={{
-              color: '#475569',
+              color: '#6B7A94',
               textDecoration: 'none',
               fontWeight: '500',
               fontSize: '15px',
@@ -295,18 +295,18 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
         fontSize: '3rem',
         fontWeight: '800',
         lineHeight: '1.1',
-        color: '#0f172a',
+        color: '#F4F7FF',
         marginBottom: '0.5rem',
         letterSpacing: '-1px',
         background: 'linear-gradient(135deg, #0f172a 0%, #3b82f6 70%, #8b5cf6 100%)',
         WebkitBackgroundClip: 'text',
         WebkitTextFillColor: 'transparent'
       }}>
-        AlphaKnaut V2: Building Institutional-Grade AI for Portfolio Strategy
+        AlphaKnaut: Building Institutional-Grade AI for Portfolio Strategy
       </h1>
       <p style={{
         fontSize: '1.25rem',
-        color: '#64748b',
+        color: '#6B7A94',
         fontStyle: 'italic',
         marginBottom: '3rem',
         fontWeight: '500'
@@ -318,14 +318,14 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
         <h2 style={{
           fontSize: '1.75rem',
           fontWeight: '700',
-          color: '#0f172a',
+          color: '#F4F7FF',
           marginBottom: '1rem',
           letterSpacing: '-0.3px'
         }}>
           The Challenge
         </h2>
         <div style={{
-          color: '#475569',
+          color: '#6B7A94',
           fontSize: '1rem',
           lineHeight: '1.7'
         }}>
@@ -351,13 +351,13 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
     }}
   >
     Riya Pradhan
-  </a>) set out to find internships combining <strong style={{ color: '#0f172a', fontWeight: '600' }}>financial economics and AI</strong>—the intersection where I plan to build my career. But such opportunities didn't exist. So I built one myself.
+  </a>) set out to find internships combining <strong style={{ color: '#F4F7FF', fontWeight: '600' }}>financial economics and AI</strong>—the intersection where I plan to build my career. But such opportunities didn't exist. So I built one myself.
 </p>
           <p style={{ marginBottom: '1rem' }}>
             Could I create an AI-powered investment platform with no prior programming experience in six weeks?
           </p>
           <p style={{ marginBottom: '1rem' }}>
-            <strong style={{ color: '#0f172a', fontWeight: '600' }}>The result:</strong> AlphaKnaut—a full-stack platform that integrates real-time financial data, economic modeling, and AI reasoning for portfolio optimization.
+            <strong style={{ color: '#F4F7FF', fontWeight: '600' }}>The result:</strong> AlphaKnaut—a full-stack platform that integrates real-time financial data, economic modeling, and AI reasoning for portfolio optimization.
           </p>
         </div>
       </div>
@@ -366,14 +366,14 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
         <h2 style={{
           fontSize: '1.75rem',
           fontWeight: '700',
-          color: '#0f172a',
+          color: '#F4F7FF',
           marginBottom: '1rem',
           letterSpacing: '-0.3px'
         }}>
           What AlphaKnaut Is
         </h2>
         <div style={{
-          color: '#475569',
+          color: '#6B7A94',
           fontSize: '1rem',
           lineHeight: '1.7'
         }}>
@@ -390,28 +390,28 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
         <h2 style={{
           fontSize: '1.75rem',
           fontWeight: '700',
-          color: '#0f172a',
+          color: '#F4F7FF',
           marginBottom: '1rem',
           letterSpacing: '-0.3px'
         }}>
           Why "AlphaKnaut"?
         </h2>
         <div style={{
-          color: '#475569',
+          color: '#6B7A94',
           fontSize: '1rem',
           lineHeight: '1.7'
         }}>
           <p style={{ marginBottom: '1rem' }}>
-            <strong style={{ color: '#0f172a', fontWeight: '600' }}>"Alpha"</strong> represents excess returns above market benchmarks—the ultimate goal of sophisticated investing. In institutional finance, consistently generating alpha requires advanced quantitative analysis, precision risk management, and superior market intelligence.
+            <strong style={{ color: '#F4F7FF', fontWeight: '600' }}>"Alpha"</strong> represents excess returns above market benchmarks—the ultimate goal of sophisticated investing. In institutional finance, consistently generating alpha requires advanced quantitative analysis, precision risk management, and superior market intelligence.
           </p>
           <p style={{ marginBottom: '1rem' }}>
-            <strong style={{ color: '#0f172a', fontWeight: '600' }}>"Knaut"</strong> (navigator/explorer) embodies the systematic journey toward discovering optimal portfolio allocations. Just as astronauts navigate uncharted space using cutting-edge technology, AlphaKnaut navigates the complex intersection of AI and financial markets to guide investors toward alpha-generating portfolios.
+            <strong style={{ color: '#F4F7FF', fontWeight: '600' }}>"Knaut"</strong> (navigator/explorer) embodies the systematic journey toward discovering optimal portfolio allocations. Just as astronauts navigate uncharted space using cutting-edge technology, AlphaKnaut navigates the complex intersection of AI and financial markets to guide investors toward alpha-generating portfolios.
           </p>
           <p style={{ marginBottom: '1rem' }}>
-            <strong style={{ color: '#0f172a', fontWeight: '600' }}>AlphaKnaut's Mission:</strong> To be the intelligent navigator that helps investors reach optimal portfolio construction, systematically beating market benchmarks through AI-powered analysis and institutional-grade methodology.
+            <strong style={{ color: '#F4F7FF', fontWeight: '600' }}>AlphaKnaut's Mission:</strong> To be the intelligent navigator that helps investors reach optimal portfolio construction, systematically beating market benchmarks through AI-powered analysis and institutional-grade methodology.
           </p>
           <p style={{ marginBottom: '1rem' }}>
-            <strong style={{ color: '#0f172a', fontWeight: '600' }}>Important Distinction:</strong> AlphaKnaut is entirely separate from Alphanaut.io (the cryptocurrency trading platform). While they focus on crypto trading automation, AlphaKnaut specializes exclusively in AI-driven equity portfolio optimization and fundamental analysis of technology sector leaders.
+            <strong style={{ color: '#F4F7FF', fontWeight: '600' }}>Important Distinction:</strong> AlphaKnaut is entirely separate from Alphanaut.io (the cryptocurrency trading platform). While they focus on crypto trading automation, AlphaKnaut specializes exclusively in AI-driven equity portfolio optimization and fundamental analysis of technology sector leaders.
           </p>
         </div>
       </div>
@@ -422,28 +422,28 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
         <h2 style={{
           fontSize: '1.75rem',
           fontWeight: '700',
-          color: '#0f172a',
+          color: '#F4F7FF',
           marginBottom: '1rem',
           letterSpacing: '-0.3px'
         }}>
           AI Reliability Challenges
         </h2>
         <div style={{
-          color: '#475569',
+          color: '#6B7A94',
           fontSize: '1rem',
           lineHeight: '1.7'
         }}>
           <p style={{ marginBottom: '1rem' }}>
-            <strong style={{ color: '#0f172a', fontWeight: '600' }}>The Hallucination Problem:</strong> As an LLM-powered system, Claude can generate convincing but inaccurate information—from unrealistic inflation rates (320%+) to political timeline confusion (mixing Biden/Trump references). Since these models are non-deterministic and stochastic by nature, the same input can produce different outputs, making reliability challenges even more complex.
+            <strong style={{ color: '#F4F7FF', fontWeight: '600' }}>The Hallucination Problem:</strong> As an LLM-powered system, Claude can generate convincing but inaccurate information—from unrealistic inflation rates (320%+) to political timeline confusion (mixing Biden/Trump references). Since these models are non-deterministic and stochastic by nature, the same input can produce different outputs, making reliability challenges even more complex.
           </p>
           <p style={{ marginBottom: '1rem' }}>
-            <strong style={{ color: '#0f172a', fontWeight: '600' }}>Solutions Implemented:</strong> I developed validation layers including economic data sanity checks, temporal consistency filters, and response verification algorithms. These significantly reduced hallucination frequency, but complete elimination proved impossible.
+            <strong style={{ color: '#F4F7FF', fontWeight: '600' }}>Solutions Implemented:</strong> I developed validation layers including economic data sanity checks, temporal consistency filters, and response verification algorithms. These significantly reduced hallucination frequency, but complete elimination proved impossible.
           </p>
           <p style={{ marginBottom: '1rem' }}>
-            <strong style={{ color: '#0f172a', fontWeight: '600' }}>Key Learning:</strong> The challenge isn't perfecting AI output, but building robust systems that assume AI will make mistakes. Each validation layer taught me more about practical AI deployment than theoretical coursework ever could.
+            <strong style={{ color: '#F4F7FF', fontWeight: '600' }}>Key Learning:</strong> The challenge isn't perfecting AI output, but building robust systems that assume AI will make mistakes. Each validation layer taught me more about practical AI deployment than theoretical coursework ever could.
           </p>
           <p style={{ marginBottom: '1rem' }}>
-            <strong style={{ color: '#0f172a', fontWeight: '600' }}>Looking Forward:</strong> The remaining edge cases are fascinating—they reveal how LLMs process and sometimes misconnect information. This real-world debugging experience highlighted the critical gap between AI research and production deployment.
+            <strong style={{ color: '#F4F7FF', fontWeight: '600' }}>Looking Forward:</strong> The remaining edge cases are fascinating—they reveal how LLMs process and sometimes misconnect information. This real-world debugging experience highlighted the critical gap between AI research and production deployment.
           </p>
         </div>
       </div>
@@ -475,36 +475,36 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
   <h2 style={{
     fontSize: '1.75rem',
     fontWeight: '700',
-    color: '#0f172a',
+    color: '#F4F7FF',
     marginBottom: '1rem',
     letterSpacing: '-0.3px'
   }}>
-    AlphaKnaut V2: Advanced Risk Analytics Engine
+    AlphaKnaut: Advanced Risk Analytics Engine
   </h2>
   
   <div style={{
-    color: '#0f172a',
+    color: '#F4F7FF',
     fontSize: '1rem',
     lineHeight: '1.7'
   }}>
     <p style={{ marginBottom: '1rem' }}>
-      <strong style={{ color: '#0f172a', fontWeight: '600' }}>The Next Evolution:</strong> Following the initial platform completion in Summer 2025, I spent September 2025 addressing this gap. Traditional portfolio tools provide basic risk scores, but institutional investors demand precise probability distributions and tail risk analysis. This drove the development of V2's comprehensive Monte Carlo simulation engine.
+      <strong style={{ color: '#F4F7FF', fontWeight: '600' }}>The Next Evolution:</strong> Following the initial platform completion in Summer 2025, I spent September 2025 addressing this gap. Traditional portfolio tools provide basic risk scores, but institutional investors demand precise probability distributions and tail risk analysis. This drove the development of V2's comprehensive Monte Carlo simulation engine.
     </p>
     
     <p style={{ marginBottom: '1rem' }}>
-      <strong style={{ color: '#0f172a', fontWeight: '600' }}>Institutional-Grade Risk Modeling:</strong> V2 introduces quantitative risk analytics that mirror those used by hedge funds and institutional asset managers. The Monte Carlo engine runs 10,000 probabilistic simulations, each representing a possible future market scenario based on 7 years of historical return patterns. This captures critical market events that shape risk profiles: the 2018 volatility spike, 2020's unprecedented crash and recovery, and the 2022-2023 interest rate regime shift.
+      <strong style={{ color: '#F4F7FF', fontWeight: '600' }}>Institutional-Grade Risk Modeling:</strong> V2 introduces quantitative risk analytics that mirror those used by hedge funds and institutional asset managers. The Monte Carlo engine runs 10,000 probabilistic simulations, each representing a possible future market scenario based on 7 years of historical return patterns. This captures critical market events that shape risk profiles: the 2018 volatility spike, 2020's unprecedented crash and recovery, and the 2022-2023 interest rate regime shift.
     </p>
     
     <p style={{ marginBottom: '1rem' }}>
-      <strong style={{ color: '#0f172a', fontWeight: '600' }}>Beyond Basic Risk Assessment:</strong> The system calculates Value-at-Risk (VaR) at both 95% and 99% confidence levels—the industry standard for regulatory capital requirements and internal risk limits. But V2 goes further, implementing Expected Shortfall analysis that quantifies average losses when VaR thresholds are breached. This addresses VaR's critical limitation: it reveals the probability of extreme losses but not their magnitude.
+      <strong style={{ color: '#F4F7FF', fontWeight: '600' }}>Beyond Basic Risk Assessment:</strong> The system calculates Value-at-Risk (VaR) at both 95% and 99% confidence levels—the industry standard for regulatory capital requirements and internal risk limits. But V2 goes further, implementing Expected Shortfall analysis that quantifies average losses when VaR thresholds are breached. This addresses VaR's critical limitation: it reveals the probability of extreme losses but not their magnitude.
     </p>
     
     <p style={{ marginBottom: '1rem' }}>
-      <strong style={{ color: '#0f172a', fontWeight: '600' }}>The Data Science Challenge:</strong> Implementing robust Monte Carlo simulation required solving several technical problems. The engine must dynamically calculate correlation matrices between assets, model multivariate return distributions, and simulate thousands of daily price paths while maintaining computational efficiency. The transition from 2-year to 7-year historical datasets proved crucial—initial results showed unrealistically optimistic risk estimates (7.8% probability of loss) that ignored major market disruptions.
+      <strong style={{ color: '#F4F7FF', fontWeight: '600' }}>The Data Science Challenge:</strong> Implementing robust Monte Carlo simulation required solving several technical problems. The engine must dynamically calculate correlation matrices between assets, model multivariate return distributions, and simulate thousands of daily price paths while maintaining computational efficiency. The transition from 2-year to 7-year historical datasets proved crucial—initial results showed unrealistically optimistic risk estimates (7.8% probability of loss) that ignored major market disruptions.
     </p>
     
    <p style={{ marginBottom: '1rem' }}>
-  <strong style={{ color: '#0f172a', fontWeight: '600' }}>Real Risk, Real Numbers:</strong> V2's enhanced modeling reveals more realistic risk profiles. Portfolio probability of loss estimates increased to the 15-25% range, and maximum drawdown projections expanded from 30% to 40-50%—figures that align with actual technology portfolio performance during market stress. This demonstrates how sample size and historical coverage directly impact quantitative model reliability. V2 transforms AlphaKnaut from a portfolio construction tool into a comprehensive risk management platform. Users can now quantify the statistical likelihood of various outcomes, understand correlation breakdowns during stress periods, and make informed decisions about position sizing and portfolio concentration. This bridges the gap between academic portfolio theory and practical risk management—the intersection where institutional finance operates.
+  <strong style={{ color: '#F4F7FF', fontWeight: '600' }}>Real Risk, Real Numbers:</strong> V2's enhanced modeling reveals more realistic risk profiles. Portfolio probability of loss estimates increased to the 15-25% range, and maximum drawdown projections expanded from 30% to 40-50%—figures that align with actual technology portfolio performance during market stress. This demonstrates how sample size and historical coverage directly impact quantitative model reliability. V2 transforms AlphaKnaut from a portfolio construction tool into a comprehensive risk management platform. Users can now quantify the statistical likelihood of various outcomes, understand correlation breakdowns during stress periods, and make informed decisions about position sizing and portfolio concentration. This bridges the gap between academic portfolio theory and practical risk management—the intersection where institutional finance operates.
 </p>
 
 <p style={{ marginBottom: '0' }}>
@@ -517,7 +517,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
         <h2 style={{
           fontSize: '1.75rem',
           fontWeight: '700',
-          color: '#0f172a',
+          color: '#F4F7FF',
           marginBottom: '1rem',
           letterSpacing: '-0.3px'
         }}>
@@ -548,7 +548,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
             }
           ].map((item, index) => (
             <div key={index} style={{
-              background: '#ffffff',
+              background: '#080E1A',
               border: '1px solid #e2e8f0',
               borderRadius: '8px',
               padding: '1rem',
@@ -572,7 +572,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
                 {item.title}
               </h4>
               <p style={{
-                color: '#64748b',
+                color: '#6B7A94',
                 fontSize: '0.85rem',
                 margin: 0
               }}>
@@ -586,7 +586,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
           width: '100%',
           borderCollapse: 'collapse',
           margin: '1.5rem 0',
-          background: '#ffffff',
+          background: '#080E1A',
           borderRadius: '8px',
           overflow: 'hidden',
           boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
@@ -595,7 +595,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
             <tr>
               <th style={{
                 background: '#f1f5f9',
-                color: '#374151',
+                color: '#B8C4D8',
                 fontWeight: '600',
                 padding: '0.75rem',
                 textAlign: 'left',
@@ -603,7 +603,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
               }}>Source</th>
               <th style={{
                 background: '#f1f5f9',
-                color: '#374151',
+                color: '#B8C4D8',
                 fontWeight: '600',
                 padding: '0.75rem',
                 textAlign: 'left',
@@ -611,7 +611,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
               }}>Purpose</th>
               <th style={{
                 background: '#f1f5f9',
-                color: '#374151',
+                color: '#B8C4D8',
                 fontWeight: '600',
                 padding: '0.75rem',
                 textAlign: 'left',
@@ -647,7 +647,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
         <h2 style={{
           fontSize: '1.75rem',
           fontWeight: '700',
-          color: '#0f172a',
+          color: '#F4F7FF',
           marginBottom: '1rem',
           letterSpacing: '-0.3px'
         }}>
@@ -692,13 +692,13 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
               }}></div>
               <div style={{
                 fontWeight: '600',
-                color: '#0f172a',
+                color: '#F4F7FF',
                 marginBottom: '0.25rem'
               }}>
                 {item.title}
               </div>
               <div style={{
-                color: '#64748b',
+                color: '#6B7A94',
                 fontSize: '0.9rem'
               }}>
                 {item.content}
@@ -712,7 +712,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
         <h2 style={{
           fontSize: '1.75rem',
           fontWeight: '700',
-          color: '#0f172a',
+          color: '#F4F7FF',
           marginBottom: '1rem',
           letterSpacing: '-0.3px'
         }}>
@@ -773,7 +773,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
         <h2 style={{
           fontSize: '1.75rem',
           fontWeight: '700',
-          color: '#0f172a',
+          color: '#F4F7FF',
           marginBottom: '1rem',
           letterSpacing: '-0.3px'
         }}>
@@ -811,7 +811,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
           }}
           >
             <div style={{
-              color: '#0f172a',
+              color: '#F4F7FF',
               fontWeight: '600',
               marginBottom: '0.75rem',
               display: 'flex',
@@ -829,14 +829,14 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
         <h2 style={{
           fontSize: '1.75rem',
           fontWeight: '700',
-          color: '#0f172a',
+          color: '#F4F7FF',
           marginBottom: '1rem',
           letterSpacing: '-0.3px'
         }}>
           Why This Matters
         </h2>
         <div style={{
-          color: '#475569',
+          color: '#6B7A94',
           fontSize: '1rem',
           lineHeight: '1.7'
         }}>
@@ -847,7 +847,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
             The technical challenges taught me invaluable lessons: translating economic theory into AI prompts, converting market sentiment into quantifiable risk metrics, and building systems that think like institutional analysts. This is precisely where I want to focus my career—constantly adapting my skills as these fields evolve together.
           </p>
           <p style={{ marginBottom: '1rem' }}>
-  <strong style={{ color: '#0f172a', fontWeight: '600' }}>Next steps:</strong> My next project will be a profitable venture, applying these same principles of financial AI to real market opportunities.
+  <strong style={{ color: '#F4F7FF', fontWeight: '600' }}>Next steps:</strong> My next project will be a profitable venture, applying these same principles of financial AI to real market opportunities.
 </p>
 <p style={{ marginBottom: '1rem' }}>
   I'd love to connect and chat about this project or anything related to finance and AI! Feel free to reach out on LinkedIn.
@@ -859,7 +859,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
         <h2 style={{
           fontSize: '1.75rem',
           fontWeight: '700',
-          color: '#0f172a',
+          color: '#F4F7FF',
           marginBottom: '1rem',
           letterSpacing: '-0.3px'
         }}>
@@ -890,7 +890,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
             }
           ].map((item, index) => (
             <div key={index} style={{
-              background: '#ffffff',
+              background: '#080E1A',
               border: '1px solid #e2e8f0',
               borderRadius: '8px',
               padding: '1rem'
@@ -904,7 +904,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
                 {item.title}
               </h4>
               <p style={{
-                color: '#64748b',
+                color: '#6B7A94',
                 fontSize: '0.85rem',
                 margin: 0
               }}>
@@ -931,7 +931,7 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
 
       {/* Contact Section */}
       <div style={{
-        background: '#0f172a',
+        background: '#0F1828',
         color: 'white',
         padding: '2rem',
         borderRadius: '12px',
@@ -4032,7 +4032,7 @@ if (showAboutPage) {
                             background: 'rgba(255, 255, 255, 0.95)',
                             border: '1px solid rgba(59, 130, 246, 0.3)',
                             borderRadius: '12px',
-                            color: '#0f172a',
+                            color: '#F4F7FF',
                             fontWeight: 600,
                             fontSize: '0.9rem'
                           }}

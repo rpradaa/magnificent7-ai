@@ -3809,7 +3809,7 @@ if (showAboutPage) {
                   <h2 style={{
                     background: 'var(--gradient-primary)',
                     WebkitBackgroundClip: 'text',
-                    ,
+                    WebkitTextFillColor: 'transparent',
                     fontSize: '2rem',
                     textAlign: 'center',
                     marginBottom: '10px',

@@ -448,6 +448,8 @@ const AboutPage: React.FC<{ onBackToPortfolio: () => void }> = ({ onBackToPortfo
         </div>
       </div>
 
+      <div style={{ marginBottom: "3rem" }}>
+        <h2 style={{ fontSize: "1.75rem", fontWeight: "700", color: "#F4F7FF", marginBottom: "1rem", letterSpacing: "-0.3px" }}>
           Technical Architecture
         </h2>
         <div style={{
